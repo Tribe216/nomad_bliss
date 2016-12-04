@@ -1,13 +1,13 @@
 # Schema Information
 
 ## users
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
-profilepic_url  | string    | not null, indexed, unique
-password_digest | string    | not null
-session_token   | string    | not null, indexed, unique
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+username          | string    | not null, indexed, unique
+profile_pic_url   | string    | not null, indexed, unique
+password_digest   | string    | not null
+session_token     | string    | not null, indexed, unique
 
 ## cities
 column name | data type | details
