@@ -48,7 +48,6 @@
     city_name: "New York City",
     region_name: "New York",
     overall_score: 4,
-    cost: 2,
     temp: "cold",
     large_image_url: "bigapple_large.jpg",
     cost_of_living: 5,
@@ -66,6 +65,15 @@
         id: 2
         name: "Tall buildings"
       }
+    }
+
+    user_review: {
+      overall_score: 2,
+      cost_of_living: 5,
+      internet: 4,
+      safety: 4,
+      ease_of_working: 4,
+      food_scene: 5
     }
   }
 
