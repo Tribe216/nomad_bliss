@@ -40,8 +40,8 @@
 
 ### Chat
 - `GET /api/messages/:city_id`
-+ Fetches messages in date order
+ + Fetches messages in date order
 - `POST /api/messages/:city_id`
-+ New message
+ + New message
 - `DELETE /api/messages/:city_id`
-+ Remove message
+ + Remove message
