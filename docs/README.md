@@ -11,21 +11,32 @@
 
 NomadBliss is a web application inspired by [Nomad List](http://nomadlist.com).
 It will be built using Ruby on Rails API backend and React-Redux on the front
-end and have, at minimum, the following features:
+end and have the following features:
 
-- [ ] New account creation, login, and guest/demo login
-- [ ] A production README
-- [ ] Hosting on Heroku
+0. New account creation, login, and guest/demo login
+0. A production README
+0. Hosting on Heroku
 
-- [ ] City filter and search on home page view
-- [ ] Detailed city view in modal
-- [ ] Message boards for each city
-- [ ] Member can "review" a city -> city scores then updated
-- [ ] Map view on search page
+0. City filter and search on home page view
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
+0. Detailed city score view modal
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
+0. Member city score submission
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
+0. Message boards for each city
+  * Adequate styling
+  * Smooth, bug-free navigation
+  * Adequate and appropriate seeds to demonstrate the feature
 
-- [ ] **BONUS** Trip view for members
-- [ ] **BONUS** Seed data generated through scraper/API calls
-- [ ] **BONUS** Email notifications
+0. **BONUS** Map view on search page
+0. **BONUS** Outside API calls for populating city info
+0. **BONUS** Member trip planner
 
 ## Design Docs
 * [View Wireframes][wireframes]
@@ -34,11 +45,11 @@ end and have, at minimum, the following features:
 * [DB schema][schema]
 * [Sample State][sample-state]
 
-[wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+[wireframes]: wireframes/
+[components]: component-hierarchy.md
+[sample-state]: sample-state.md
+[api-endpoints]: api-endpoints.md
+[schema]: schema.md
 
 ## Implementation Timeline
 
@@ -58,10 +69,10 @@ end and have, at minimum, the following features:
 
 **Objective:** Cities can be clicked on to open up detail view modal
 
-### Phase 5: Message Board (2 days)
+### Phase 5: User reviews (2 days)
+
+**objective:** Main page incorporates Google map view
+
+### Phase 6: Message Board (1 day)
 
 **objective:** Users can write, reply to messages for each city
-
-### Phase 6: Subjective score edit (1 days)
-
-**objective:** Users can add/edit subjective scores to cities.
