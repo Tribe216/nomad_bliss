@@ -1,4 +1,5 @@
-```{
+```js
+{
   currentUser: {
     id: 1,
     username: "user-prime",
@@ -81,4 +82,5 @@
       body: "Plenty of things to see"
     }
   }
-}```
+}
+```
