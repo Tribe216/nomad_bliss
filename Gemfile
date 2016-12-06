@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+# ruby '2.2.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -44,6 +44,11 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
+end
+
+group :production do
+  gem 'newrelic_rpm'
+  gem 'rails_12factor' # error feedback
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
