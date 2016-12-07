@@ -4,7 +4,7 @@
 
 [Trello link][trello]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://nomad-bliss.herokuapp.com
 [trello]: https://trello.com/b/c9C31ZtR
 
 ## Minimum Viable Product
