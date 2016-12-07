@@ -13,8 +13,8 @@ const UserLoggedInGreeting = (username, logout) => {
 const UserLoggedOutGreeting = () => {
   return (
     <div className='auth_box'>
-      <Link to="/login">Login</Link><br />
-      <Link to="/signup">Sign Up</Link>
+      <Link to="/login" className="login-box">Login</Link><br />
+      <Link to="/signup" className="signup-box">Sign Up</Link>
     </div>
   );
 }

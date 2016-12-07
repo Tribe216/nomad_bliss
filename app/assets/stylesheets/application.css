@@ -65,18 +65,21 @@ body {
 }
 
 .logo {
-  width: 200px;
+  width: 50px;
   height: auto;
+  float: left;
 }
 
 header {
   padding: 10px;
   font-weight: bold;
   font-size: 36px;
+  color: #003399;
 }
 
 header > h1 {
-  display: inline-block;
+  float: left;
+  padding: 10px;
 }
 
 .auth_box {
@@ -86,6 +89,12 @@ header > h1 {
 
 .auth_box > a{
   text-decoration: none;
+}
+
+.vert-centered {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 

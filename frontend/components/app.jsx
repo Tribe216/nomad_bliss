@@ -5,9 +5,9 @@ const App = ({ children }) => (
   <div>
     <header>
       <img className='logo' src={window.site_logo} />
-      <h1>Nomad Bliss</h1>
-      <GreetingContainer />
+      <h1 className='vert-centered'>Nomad Bliss</h1>      
     </header>
+    <GreetingContainer />
 
     { children }
   </div>
