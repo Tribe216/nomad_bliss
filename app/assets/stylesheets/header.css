@@ -33,38 +33,61 @@
   font-weight: bold;
 }
 
-.auth_box {
-  font-size: 12px;
+.auth-box {
+
   /*background-color: pink;*/
-  display: inline-block;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.auth_box > a {
+.auth-button {
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid red;
+  border-radius: 5px;
   text-decoration: none;
   text-transform: uppercase;
   padding: 10px 10px;
   margin-left: 10px;
-  border: 2px solid red;
-  border-radius: 5px;
   float: left;
 }
 
-.red_box {
+.red-box {
   background-color: red;
   color: white;
 }
 
-.red_box:hover {
+.red-box:hover {
   background-color: white;
   color: red;
 }
 
-.white_box {
+.white-box {
   background-color: white;
   color: red;
 }
 
-.white_box:hover {
+.white-box:hover {
   background-color: red;
   color: white;
+}
+
+.profile-pic {
+  /*border: 0px solid black;*/
+  width: 50px;
+  height: 50px;
+  padding: 1px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background-size: 100%;
+  background-position: top;
+}
+
+.profile-pic > img {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  z-index: -1;
 }

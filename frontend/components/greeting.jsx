@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import { Link, Button } from 'react-router';
 
 const UserLoggedInGreeting = (username, logout) => {
+  const divStyle = {
+            backgroundImage: 'url(' + window.profile_pic + ')'
+        }
   return (
-    <div className='auth_box group'>
-      <label>{username}</label>
-      <button className="red_box" onClick={logout}>Log Out</button>
+    <div className='auth-box group'>
+      <Link className="profile-pic" to="/profile" style={divStyle}>
+        <div />
+      </Link>
+      <Link to="" className="auth-button red-box" onClick={logout} >Log Out</Link>
     </div>
   );
 }
 
 const UserLoggedOutGreeting = () => {
   return (
-    <div className='auth_box group'>
-      <Link to="/signup" className="signup-box red_box">Join</Link>
-      <Link to="/login" className="login-box white_box">Login</Link>
+    <div className='auth-box group'>
+      <Link to="/signup" className='auth-button red-box'>Join</Link>
+      <Link to="/login" className='auth-button white-box'>Login</Link>
     </div>
   );
 }
