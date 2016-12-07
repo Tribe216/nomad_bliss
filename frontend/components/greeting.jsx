@@ -3,7 +3,7 @@ import { Link, Button } from 'react-router';
 
 const UserLoggedInGreeting = (username, logout) => {
   return (
-    <div className='auth_box'>
+    <div className='auth_box group'>
       <h1>{username}</h1>
       <button onClick={logout}>Log Out</button>
     </div>
@@ -12,9 +12,9 @@ const UserLoggedInGreeting = (username, logout) => {
 
 const UserLoggedOutGreeting = () => {
   return (
-    <div className='auth_box'>
-      <Link to="/login" className="login-box">Login</Link><br />
-      <Link to="/signup" className="signup-box">Sign Up</Link>
+    <div className='auth_box group'>
+      <Link to="/signup" className="signup-box red_box">Join</Link>
+      <Link to="/login" className="login-box white_box">Login</Link>      
     </div>
   );
 }

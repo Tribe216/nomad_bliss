@@ -41,7 +41,7 @@ class SessionForm extends Component {
 
 
     return (
-      <div>
+      <div className='session_box'>
         <h1>{ headerText }</h1>
         { errorEl }
         <form onSubmit={ this.handleSubmit }>
