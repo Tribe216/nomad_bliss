@@ -37,15 +37,13 @@ class SessionForm extends Component {
     const headerText = (this.props.formType === 'signup') ?
       'Sign Up' : 'Log In';
 
-    const errorEls = this.props.errors.map( (error) => (
-      <li>{ error.responseText.base }</li>
-      )
-    );
-    
+    const errorEl = (<h2>{this.props.errors[0]}</h2>);
+
+
     return (
       <div>
         <h1>{ headerText }</h1>
-        <ul>{ errorEls }</ul>
+        { errorEl }
         <form onSubmit={ this.handleSubmit }>
           Username:
           <input type='text' onChange={this.setUsername} value={ this.username } /><br />

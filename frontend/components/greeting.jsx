@@ -3,8 +3,8 @@ import { Link, Button } from 'react-router';
 
 const UserLoggedInGreeting = (username, logout) => {
   return (
-    <div>
-      <h1>Welcome {username}</h1>
+    <div className='auth_box'>
+      <h1>{username}</h1>
       <button onClick={logout}>Log Out</button>
     </div>
   );
@@ -12,7 +12,7 @@ const UserLoggedInGreeting = (username, logout) => {
 
 const UserLoggedOutGreeting = () => {
   return (
-    <div>
+    <div className='auth_box'>
       <Link to="/login">Login</Link><br />
       <Link to="/signup">Sign Up</Link>
     </div>

@@ -4,9 +4,10 @@ import { signup, login } from '../actions/session_actions';
 import SessionForm from './session_form';
 
 const mapStateToProps = (state) => {
+
   return {
-    loggedIn: !!state.currentUser,
-    errors: state.errors || []
+    loggedIn: !!state.session.currentUser,
+    errors: state.session.errors || []
   };
 };
 
