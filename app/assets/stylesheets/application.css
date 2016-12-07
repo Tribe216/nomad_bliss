@@ -73,68 +73,8 @@ body {
   font-family: "proxima-nova","Proxima Nova", sans-serif;
 }
 
-header {
-  /*padding: 10px;*/
-  color: #003399;
-  background-color: yellow;
-  padding: 10px;
+.vert-align {
   position: relative;
-}
-
-.logo {
-  width: 50px;
-  height: auto;
-  float: left;
-}
-
-header > h1 {
-  float: left;
-  font-size: 26px;
-  padding-left: 60px;
-}
-
-header > h1 > strong {
-  font-weight: bold;
-}
-
-.auth_box {
-  float: right;
-  font-size: 12px;
-  background-color: pink;
-}
-
-.red_box {
-  background-color: red;
-  color: white;
-}
-
-.red_box:hover {
-  background-color: white;
-  color: red;
-}
-
-.white_box {
-  background-color: white;
-  color: red;
-}
-
-.white_box:hover {
-  background-color: red;
-  color: white;
-}
-
-.auth_box > a {
-  text-decoration: none;
-  text-transform: uppercase;
-  float: left;
-  padding: 10px 10px;
-  margin-left: 10px;
-  border: 2px solid red;
-  border-radius: 5px;
-}
-
-.vert-centered {
-  position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }

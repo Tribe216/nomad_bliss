@@ -3,11 +3,13 @@ import GreetingContainer from './greeting_container';
 
 const App = ({ children }) => (
   <div>
-    <header className='group'>
-      <img className='logo' src={window.site_logo} />
-      <h1 className='vert-centered'>
-        <strong>Nomad</strong> Bliss
-      </h1>
+    <header className='site-navbar'>
+      <span className='site-label-box'>
+        <img className='logo' src={window.site_logo} />
+        <span className='site-name'>
+          <strong>Nomad</strong> Bliss
+        </span>
+      </span>
       <GreetingContainer />
     </header>
 
