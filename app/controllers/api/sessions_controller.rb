@@ -11,7 +11,7 @@ class Api::SessionsController < ApplicationController
       sign_in(@user)
       render 'api/users/show'
     else
-      render json: @user.errors.full_messages, status: 401
+      render json: ["Invalid login"], status: 401
     end
   end
 
@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
     if signed_in?
       sign_out
     else
-      render json: ["No current login"], status: 404
+      render json: ["Not logged in"], status: 404
     end
   end
 end

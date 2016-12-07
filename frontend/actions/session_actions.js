@@ -33,7 +33,6 @@ export function login(user) {
   return (dispatch) => {
     return ApiUtil.login(user).then(
       (currentUser) => {
-        // debugger
         dispatch(receiveCurrentUser(currentUser));
       },
       (err) => {
