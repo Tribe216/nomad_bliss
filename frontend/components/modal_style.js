@@ -25,7 +25,8 @@ const customStyles = {
     WebkitOverflowScrolling    : 'touch',
     outline                    : 'none',
     padding                    : '0',
-    borderRadius               : '10px',
+    borderRadius               : '10px'
+
   }
 };
 
