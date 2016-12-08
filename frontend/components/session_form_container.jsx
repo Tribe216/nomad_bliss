@@ -12,19 +12,16 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-
+  let formProps = {
+    closeModal: ownProps.closeModal,
+    processFormLogin: (user) => dispatch(login(user)),
+    processFormSignup: (user) => dispatch(signup(user))
+  };
+  
   if (ownProps.formType === 'login') {
-    return {
-      formType: 'login',
-      closeModal: ownProps.closeModal,
-      processForm: (user) => dispatch(login(user))
-    };
+    return Object.assign({}, formProps, {initialFormType: 'login'});
   } else {
-    return {
-      formType: 'signup',
-      closeModal: ownProps.closeModal,
-      processForm: (user) => dispatch(signup(user))
-    };
+    return Object.assign({}, formProps, {initialFormType: 'signup'});
   }
 };
 
