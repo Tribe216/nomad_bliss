@@ -22,7 +22,14 @@
   text-align: center;
   margin-bottom: 10px;
   color: red;
-  font-weight: bold;
+  font-weight: normal;
+  fint-size: 16px;
+  width: 320px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid red;
+  box-sizing: border-box;
 }
 
 .session-label{
@@ -72,7 +79,7 @@
   margin-top: 10px;
 }
 
-.session-switcher:hover{
+.session-switcher > span:hover{
   cursor: pointer;
   color: #aaa;
 }

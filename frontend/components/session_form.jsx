@@ -13,28 +13,53 @@ class SessionForm extends Component {
     this.setUsername = this.setUsername.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.switchLink = this.switchLink.bind(this);
+    this.loginGuest = this.loginGuest.bind(this);
+    this.processForm = this.processForm.bind(this);
   }
 
   componentDidMount() {
     this.setState( { formType: this.props.initialFormType } );
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const user = Object.assign({}, this.state);
-    const wrappedUser = {
-      user: user
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
+  loginGuest() {
+    this.processForm({
+      username: 'guest',
+      password: 'guestymcguestface',
+      formType: 'login'
+    });
+  }
+
+  getWrappedUser(stateData) {
+    return {
+      user : {
+        username: stateData.username,
+        password: stateData.password
+      }
     };
-    if (this.state.formType === 'signup') {
-      this.props.processFormSignup(wrappedUser).then(
+  }
+
+  processForm(stateData=this.state) {
+    if (stateData.formType === 'signup') {
+      this.props.processFormSignup(this.getWrappedUser(stateData)).then(
         () => this.props.closeModal());
     } else {
-      this.props.processFormLogin(wrappedUser).then(
+      this.props.processFormLogin(this.getWrappedUser(stateData)).then(
         () => this.props.closeModal());
     }
   }
 
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.processForm();
+  }
+
   changeFormType(formType) {
+    this.props.clearErrors();
     this.setState({ formType });
   }
 
@@ -51,14 +76,18 @@ class SessionForm extends Component {
   switchLink() {
     if (this.state.formType === 'login') {
       return (
-        <div className='session-switcher' onClick={ this.changeFormType.bind(this, 'signup') }>
-          Don't have an account? Click here to sign up.
+        <div className='session-switcher'>
+          <span onClick={ this.changeFormType.bind(this, 'signup')}>
+            No account? Click here to sign up
+          </span> or <span className="guest-login" onClick={ this.loginGuest } >Log in as Guest</span>
         </div>
       );
     } else {
       return (
-        <div className='session-switcher' onClick={ this.changeFormType.bind(this, 'login') }>
-          Already have an account? Click here to log in.
+        <div className='session-switcher'>
+          <span onClick={ this.changeFormType.bind(this, 'login')}>
+            Click here to log in
+          </span> or <span className="guest-login" onClick={ this.loginGuest } >Log in as Guest</span>
         </div>
       );
     }
@@ -71,12 +100,14 @@ class SessionForm extends Component {
     const buttonText = (this.state.formType === 'signup') ?
       'Sign Up!' : 'Log in!';
 
-    const errorEl = (<h2>{this.props.errors[0]}</h2>);
+    const errorEl = (this.props.errors.length > 0) ?
+      (<h2 className='session-error'>{ this.props.errors[0] }</h2>) :
+      "";
 
     return (
       <div className='session-box'>
         <h1>{ headerText }</h1>
-        <div className='session-error'>{ errorEl }</div>
+        { errorEl }
         <form className='session-form' onSubmit={ this.handleSubmit }>
             <label className='session-label'>Username:</label>
             <input
