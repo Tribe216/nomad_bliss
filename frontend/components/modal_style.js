@@ -25,9 +25,7 @@ const customStyles = {
     WebkitOverflowScrolling    : 'touch',
     outline                    : 'none',
     padding                    : '0',
-    borderRadius               : '20px',
-    boxShadow                  : 'inset 0px 0px 34px 2px rgba(10,7,102,1)',
-    border                     : '5px solid navy'
+    borderRadius               : '10px',
   }
 };
 

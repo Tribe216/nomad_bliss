@@ -16,6 +16,7 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  margin: 2px 0;
 }
 
 .logo {
@@ -54,6 +55,7 @@
   margin-left: 10px;
   float: left;
   transition: background-color 0.3s, color 0.0s;
+  outline: 0;
 }
 
 .auth-button:hover {
