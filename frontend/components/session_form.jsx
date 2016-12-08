@@ -20,7 +20,7 @@ class SessionForm extends Component {
       user: user
     };
 
-    this.props.processForm(wrappedUser).then(() => this.props.router.push('/'));
+    this.props.processForm(wrappedUser).then(() => this.props.closeModal());
   }
 
   setUsername(e) {
@@ -41,16 +41,20 @@ class SessionForm extends Component {
 
 
     return (
-      <div className='session_box'>
+      <div className='session-box'>
         <h1>{ headerText }</h1>
-        { errorEl }
-        <form onSubmit={ this.handleSubmit }>
-          Username:
-          <input type='text' onChange={this.setUsername} value={ this.username } /><br />
-          Password:
-          <input type='password' onChange={this.setPassword} value={ this.username } /><br />
-          <input type='submit' value= 'Submit' />
+        <div className='session-error'>{ errorEl }</div>
+        <form className='session-form' onSubmit={ this.handleSubmit }>
+            <label className='session-label'>Username:</label>
+            <input className='session-input' type='text' onChange={this.setUsername} />
           <br />
+
+            <label className='session-label'>Password:</label>
+            <input className='session-input' type='password' onChange={this.setPassword} />
+          <br />
+          <div className='session-bottom'>
+            <input className='session-submit' type='submit' value= 'Log In!' />
+          </div>
         </form>
       </div>
     );
@@ -58,3 +62,6 @@ class SessionForm extends Component {
 }
 
 export default SessionForm;
+
+// <label className='session-label'>Username:</label>
+// <label className='session-label'>Password:</label>
