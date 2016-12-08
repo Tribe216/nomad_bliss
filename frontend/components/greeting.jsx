@@ -8,10 +8,8 @@ class Greeting extends Component {
 
   constructor(props) {
     super(props);
-    this.currentUser = this.props.currentUser;
     this.userLoggedInGreeting = this.userLoggedInGreeting.bind(this);
     this.userLoggedOutGreeting = this.userLoggedOutGreeting.bind(this);
-    this.getInitialModalState = this.getInitialModalState.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
 
@@ -49,10 +47,6 @@ class Greeting extends Component {
     );
   }
 
-  getInitialModalState()  {
-    return { modalIsOpen: false };
-  }
-
   openModal(modalFormType)  {
     this.setState({modalIsOpen: true, modalFormType});
   }
@@ -62,8 +56,8 @@ class Greeting extends Component {
   }
 
   authBox(currentUser) {
-    if (this.currentUser) {
-      return this.userLoggedInGreeting(this.currentUser.username, logout);
+    if (this.props.currentUser) {
+      return this.userLoggedInGreeting(this.props.currentUser.username, logout);
     } else {
       return this.userLoggedOutGreeting();
     }
@@ -75,7 +69,7 @@ class Greeting extends Component {
   render() {
     return (
       <div>
-        {this.authBox(this.currentUser)}
+        {this.authBox(this.props.currentUser)}
         <Modal
               isOpen={this.state.modalIsOpen}
               onAfterOpen={this.afterOpenModal}

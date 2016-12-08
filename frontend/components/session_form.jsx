@@ -19,7 +19,6 @@ class SessionForm extends Component {
     const wrappedUser = {
       user: user
     };
-
     this.props.processForm(wrappedUser).then(() => this.props.closeModal());
   }
 
