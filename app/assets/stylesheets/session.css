@@ -1,0 +1,46 @@
+.session-box {
+  font-size: 20px;
+  padding: 30px;
+  background-color: #eee;
+}
+
+.session-box > h1{
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  color: navy;
+  margin-bottom: 20px;
+}
+.session-form{
+  background-color: inherit;
+}
+
+.session-error {
+  text-align: center;
+  margin-bottom: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.session-label{
+  text-align: center;
+  display: block;
+  font-weight: bold;
+}
+
+.session-input{
+  width: 400px;
+  margin: 10px 0px;
+  border: 2px solid #aaa;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: navy;
+  color: #ddd;
+}
+
+.session-submit{
+  border
+  margin: 0 auto;
+  font-size: 14px;
+}

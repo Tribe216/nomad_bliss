@@ -52,6 +52,11 @@
   padding: 10px 10px;
   margin-left: 10px;
   float: left;
+  transition: background-color 0.3s, color 0.0s;
+}
+
+.auth-button:hover {
+  cursor: pointer;
 }
 
 .red-box {
@@ -75,7 +80,7 @@
 }
 
 .profile-pic {
-  /*border: 0px solid black;*/
+  /*border: 0px solid white;*/
   width: 50px;
   height: 50px;
   padding: 1px;
@@ -83,11 +88,9 @@
   border-radius: 50%;
   background-size: 100%;
   background-position: top;
+  transition: box-shadow 0.3s;
 }
 
-.profile-pic > img {
-  margin: 0 auto;
-  display: block;
-  width: 100%;
-  z-index: -1;
+.profile-pic:hover {
+  box-shadow: 0px 0px 2px 2px rgba(255,0,0,1);
 }

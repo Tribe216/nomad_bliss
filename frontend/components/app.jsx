@@ -1,19 +1,21 @@
 import React from 'react';
 import GreetingContainer from './greeting_container';
+import Home from './home'
+import { Link } from 'react-router';
 
 const App = ({ children }) => (
   <div>
     <header className='site-navbar'>
-      <span className='site-label-box'>
+      <Link className='site-label-box' to="/">
         <img className='logo' src={window.site_logo} />
         <span className='site-name'>
           <strong>Nomad</strong> Bliss
         </span>
-      </span>
+      </Link>
       <GreetingContainer />
     </header>
-
     { children }
+
   </div>
 );
 

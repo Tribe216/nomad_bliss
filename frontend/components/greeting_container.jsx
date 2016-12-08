@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Greeting from './greeting';
 import { signup, login, logout } from '../actions/session_actions';
 
+
 const mapStateToProps = (state) => {
 
   return {
@@ -11,8 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // signup: () => dispatch(signup()),
-    // login: () => dispatch(login()),
+    signup: () => dispatch(signup()),
+    login: () => dispatch(login()),
     logout: () => dispatch(logout())
   };
 };

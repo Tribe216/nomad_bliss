@@ -1,35 +1,93 @@
 import React, { Component } from 'react';
 import { Link, Button } from 'react-router';
+import Modal from 'react-modal';
+import SessionFormContainer from './session_form_container';
+import customStyles from './modal_style';
 
-const UserLoggedInGreeting = (username, logout) => {
-  const divStyle = {
-            backgroundImage: 'url(' + window.profile_pic + ')'
-        }
-  return (
-    <div className='auth-box group'>
-      <Link className="profile-pic" to="/profile" style={divStyle}>
-        <div />
-      </Link>
-      <Link to="" className="auth-button red-box" onClick={logout} >Log Out</Link>
-    </div>
-  );
-}
+class Greeting extends Component {
 
-const UserLoggedOutGreeting = () => {
-  return (
-    <div className='auth-box group'>
-      <Link to="/signup" className='auth-button red-box'>Join</Link>
-      <Link to="/login" className='auth-button white-box'>Login</Link>
-    </div>
-  );
-}
+  constructor(props) {
+    super(props);
+    this.currentUser = this.props.currentUser;
+    this.userLoggedInGreeting = this.userLoggedInGreeting.bind(this);
+    this.userLoggedOutGreeting = this.userLoggedOutGreeting.bind(this);
+    this.getInitialModalState = this.getInitialModalState.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
 
-const Greeting = ({ currentUser, logout }) => {
-  if (currentUser) {
-    return UserLoggedInGreeting(currentUser.username, logout);
-  } else {
-    return UserLoggedOutGreeting();
+    this.state = {
+      modalIsOpen: false,
+      modalFormType: null
+    };
   }
-} //
+
+  componentWillMount() {
+      Modal.setAppElement('body');
+   }
+
+  userLoggedInGreeting (username, logout) {
+    const divStyle = {
+      backgroundImage: 'url(' + window.profile_pic + ')'
+    };
+
+    return (
+      <div className='auth-box group'>
+        <div className="profile-pic" to="/profile" style={divStyle}>
+          <div />
+        </div>
+        <button className="auth-button red-box" onClick={this.props.logout} >Log Out</button>
+      </div>
+    );
+  }
+
+  userLoggedOutGreeting () {
+    return (
+      <div className='auth-box group'>
+        <button onClick={this.openModal.bind(this, 'signup')} className='auth-button red-box'>Join</button>
+        <button onClick={this.openModal.bind(this, 'login')} className='auth-button white-box'>Login</button>
+      </div>
+    );
+  }
+
+  getInitialModalState()  {
+    return { modalIsOpen: false };
+  }
+
+  openModal(modalFormType)  {
+    this.setState({modalIsOpen: true, modalFormType});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
+  authBox(currentUser) {
+    if (this.currentUser) {
+      return this.userLoggedInGreeting(this.currentUser.username, logout);
+    } else {
+      return this.userLoggedOutGreeting();
+    }
+  }
+
+  afterOpenModal() {
+  }
+
+  render() {
+    return (
+      <div>
+        {this.authBox(this.currentUser)}
+        <Modal
+              isOpen={this.state.modalIsOpen}
+              onAfterOpen={this.afterOpenModal}
+              onRequestClose={this.closeModal}
+              style={customStyles}
+              contentLabel="Example Modal"
+        >
+          <SessionFormContainer formType={this.state.modalFormType} closeModal={this.closeModal}/>
+        </Modal>
+      </div>
+    );
+  }
+}
 
 export default Greeting;
