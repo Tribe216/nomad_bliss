@@ -71,11 +71,12 @@ class Greeting extends Component {
       <div>
         {this.authBox(this.props.currentUser)}
         <Modal
-              isOpen={this.state.modalIsOpen}
-              onAfterOpen={this.afterOpenModal}
-              onRequestClose={this.closeModal}
-              style={customStyles}
-              contentLabel="Example Modal"
+          animationType={"fade"}
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
         >
           <SessionFormContainer formType={this.state.modalFormType} closeModal={this.closeModal}/>
         </Modal>

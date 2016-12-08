@@ -6,7 +6,8 @@ class SessionForm extends Component {
     this.state = {
       username: "",
       password: "",
-      formType: this.props.initialFormType
+      formType: this.props.initialFormType,
+      timeStamp: new Date()
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,14 +16,15 @@ class SessionForm extends Component {
     this.switchLink = this.switchLink.bind(this);
     this.loginGuest = this.loginGuest.bind(this);
     this.processForm = this.processForm.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   componentDidMount() {
     this.setState( { formType: this.props.initialFormType } );
   }
 
-  componentWillUnmount() {
-    this.props.clearErrors();
+  clearForm() {
+    this.setState( { username: "", password: "" } );
   }
 
   loginGuest() {
@@ -52,15 +54,15 @@ class SessionForm extends Component {
     }
   }
 
-
   handleSubmit(e) {
     e.preventDefault();
+    this.clearForm();
     this.processForm();
   }
 
   changeFormType(formType) {
     this.props.clearErrors();
-    this.setState({ formType });
+    this.setState({ formType, username: "", password: "" });
   }
 
   setUsername(e) {
@@ -77,9 +79,9 @@ class SessionForm extends Component {
     if (this.state.formType === 'login') {
       return (
         <div className='session-switcher'>
-          <span onClick={ this.changeFormType.bind(this, 'signup')}>
-            No account? Click here to sign up
-          </span> or <span className="guest-login" onClick={ this.loginGuest } >Log in as Guest</span>
+            No account? <span onClick={ this.changeFormType.bind(this, 'signup')}>
+            Click here to sign up
+            </span> or <span className="guest-login" onClick={ this.loginGuest } >Log in as Guest</span>
         </div>
       );
     } else {
@@ -108,13 +110,15 @@ class SessionForm extends Component {
       <div className='session-box'>
         <h1>{ headerText }</h1>
         { errorEl }
-        <form className='session-form' onSubmit={ this.handleSubmit }>
+        <form key={this.state.timeStamp} className='session-form' onSubmit={ this.handleSubmit }>
             <label className='session-label'>Username:</label>
             <input
               className='session-input'
               type='text'
               onChange={this.setUsername}
-              placeholder="Username" />
+              placeholder="Username"
+              value={this.state.username}
+               />
           <br />
 
             <label className='session-label'>Password:</label>
@@ -123,6 +127,7 @@ class SessionForm extends Component {
               type='password'
               onChange={this.setPassword}
               placeholder="Password"
+              value={this.state.password}
              />
           <br />
           <div className='session-bottom'>
