@@ -1,136 +1,62 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require_relative './seeds/00_users.rb'
+require_relative './seeds/01_countries.rb'
+require_relative './seeds/02_regions.rb'
+require_relative './seeds/03_cities.rb'
+require_relative './seeds/04_metrics.rb'
+require_relative './seeds/05_reviews.rb'
+# require_relative './seeds/06_tags.rb'
+# require_relative './seeds/07_taggings.rb'
+# require_relative './seeds/08_messages.rb'
+# require_relative './seeds/09_weather_records.rb'
+
 User.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
-User.create({username: "bart", password: "password"})
-User.create({username: "test1", password: "password"})
-User.create({username: "test2", password: "password"})
-User.create({username: "guest", password: "guestymcguestface"})
+USERS.each { |user| User.create(user) }
 
-states = [
-"Alabama",
-"Alaska",
-"Arizona",
-"Arkansas",
-"California",
-"Colorado",
-"Connecticut",
-"Delaware",
-"Florida",
-"Georgia",
-"Hawaii",
-"Idaho",
-"Illinois",
-"Indiana",
-"Iowa",
-"Kansas",
-"Kentucky",
-"Louisiana",
-"Maine",
-"Maryland",
-"Massachusetts",
-"Michigan",
-"Minnesota",
-"Mississippi",
-"Missouri",
-"Montana",
-"Nebraska",
-"Nevada",
-"New Hampshire",
-"New Jersey",
-"New Mexico",
-"New York",
-"North Carolina",
-"North Dakota",
-"Ohio",
-"Oklahoma",
-"Oregon",
-"Pennsylvania",
-"Rhode Island",
-"South Carolina",
-"South Dakota",
-"Tennessee",
-"Texas",
-"Utah",
-"Vermont",
-"Virginia",
-"Washington",
-"West Virginia",
-"Wisconsin",
-"Wyoming"
-]
+###############################################################
 
-tri_states = [
-  "New Jersey",
-  "New York",
-  "Pennsylvania"
-]
+Country.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('countries')
 
-tri_states_cities = [
- {
-   city_name: "New York",
-   latitude: 40.730610,
-   longitude: -73.935242,
-   region_id: 60,
- },
+COUNTRIES.each { |country| Country.create(country) }
 
- {
-   city_name: "Philadelphia",
-   latitude: 39.952583,
-   longitude: -75.165222,
-   region_id: 62,
- },
+###############################################################
 
- {
-   city_name: "Newark",
-   latitude: 40.735657,
-   longitude: -74.172363,
-   region_id: 60,
- },
+Region.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('regions')
 
- {
-   city_name: "Yonkers",
-   latitude:  40.94139,
-   longitude: -73.86444,
-   region_id: 61,
- },
+USA_STATES.each do |state|
+  Region.create({name: state, country_code: "us"})
+end
 
- {
-   city_name: "Trenton",
-   latitude: 40.217053,
-   longitude: -74.742938,
-   region_id: 60,
- },
+CANADA_PROVINCES.each do |province|
+  Region.create({name: province, country_code: "ca"})
+end
 
- {
-   city_name: "Scranton",
-   latitude: 41.408970,
-   longitude: -75.662415,
-   region_id: 62,
- },
-
- {
-   city_name: "Buffalo",
-   latitude: 42.886448,
-   longitude: -78.878372,
-   region_id: 61,
- },
-
-
-]
-
-
-# Region.delete_all
-# tri_states.each do |state|
-#   Region.create({name: state})
-# end
+###############################################################
 
 City.delete_all
-tri_states_cities.each do |city|
+ActiveRecord::Base.connection.reset_pk_sequence!('cities')
+
+CITIES_NEAR_NYC.each do |city|
   City.create(city)
+end
+
+###############################################################
+
+Metric.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('metrics')
+
+METRICS.each do |metric|
+  Metric.create(metric)
+end
+
+###############################################################
+
+Review.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
+
+REVIEWS.each do |review|
+  Review.create(review)
 end

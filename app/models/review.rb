@@ -13,7 +13,7 @@
 
 class Review < ApplicationRecord
   validates :user_id, :city_id, :metric_id, :score, presence: true
-  validates :metric_id, scope: [:user_id, :city_id]
+  validates :metric_id, uniqueness: { scope: [:user_id, :city_id] }
 
   belongs_to :city
   belongs_to :user

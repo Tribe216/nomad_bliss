@@ -13,16 +13,24 @@ session_token     | string    | not null, indexed, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-name       | string    | not null, indexed
+name            | string    | not null, indexed
 latitude        | float     | not null, indexed
 longitude       | float     | not null, indexed, unique: with latitude
 region_id       | integer   | not null, indexed, unique: with city_name
 
 ## regions
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+name         | string    | not null, indexed, unique
+country_code | string    | not null, foreign_key
+
+## countries
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
+name        | string    | not null, indexed, unique
+code        | string    | not null, indexed, unique 
 
 ## weather_records
 column name | data type | details

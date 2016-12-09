@@ -9,7 +9,12 @@
 #
 
 class Region < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :country_code, presence: true
 
   has_many :cities
+
+  belongs_to :country,
+    :foreign_key => :country_code,
+    :primary_key => :code
+
 end

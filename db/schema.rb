@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209021949) do
+ActiveRecord::Schema.define(version: 20161209143239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20161209021949) do
     t.index ["latitude", "longitude"], name: "index_cities_on_latitude_and_longitude", unique: true, using: :btree
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_countries_on_code", unique: true, using: :btree
+  end
+
   create_table "metrics", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -35,8 +43,9 @@ ActiveRecord::Schema.define(version: 20161209021949) do
 
   create_table "regions", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "country_code", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
