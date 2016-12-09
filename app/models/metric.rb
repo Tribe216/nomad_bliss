@@ -13,7 +13,16 @@ class Metric < ApplicationRecord
 
   has_many :reviews
 
-  def average_score_for_city(city_id)
-    
+  def self.names
+    Metric.all.map { |metric| metric.name}
+  end
+
+  def average_for_city(city)
+    reviews = Review.where(
+      city_id: city.id,
+      metric_id: self.id
+    )
+
+    (reviews.map {|r| r.score}.inject(:+).to_f / reviews.size).ceil
   end
 end

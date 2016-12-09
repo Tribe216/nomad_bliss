@@ -12,11 +12,15 @@
 #
 
 class City < ApplicationRecord
+
   validates :city_name, :latitude, :longitude, :region_id, presence: true
   validates :city_name, uniqueness: { scope: :region_id }
   validates :longitude, uniqueness: { scope: :latitude }
 
   belongs_to :region
+
+  # belongs_to :country, through: :region
+  delegate :country, :to => :region, :allow_nil => true
 
   has_many :taggings
   has_many :tags, through: :taggings
@@ -35,18 +39,21 @@ class City < ApplicationRecord
     # self.weather_records.inject{ |sum, el| sum + el }.to_f / reviews.size
   end
 
-  def metric_scores
-    score_agg = Hash.new {|h,k| h[k] = Array.new }
-    final_scores = Array.new(0)
-    self.reviews.each do |review|
-      score_agg[review.metric.name] += review.score
+  def method_missing(metric_name)
+    metric = Metric.find_by(name: metric_name)
+    return nil unless metric
+
+    metric.average_for_city(self)
+  end
+
+  def average_scores
+    scores = Hash.new
+    Metric.all.each do |metric|
+      scores[metric.id] = Hash.new()
+      scores[metric.id][metric.name] = metric.average_for_city(self)
     end
 
-    score_agg.map do |metric_key, scores|
-      final_scores[metric_key] = scores.inject{ |sum, el| sum + el }.to_f / scores.size
-    end
-
-    score_agg
+    scores
   end
 
 
