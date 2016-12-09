@@ -64,6 +64,7 @@
   color: white;
   font-weight: bold;
   font-size: 18px;
+  outline: 0;
 }
 
 .session-submit:hover{

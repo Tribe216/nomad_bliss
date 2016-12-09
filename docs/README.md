@@ -71,7 +71,7 @@ end and have the following features:
 
 ### Phase 5: User reviews (2 days)
 
-**objective:** Main page incorporates Google map view
+**objective:** Users can create, edit, and delete reviews of cities
 
 ### Phase 6: Message Board (1 day)
 

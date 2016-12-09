@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: weather_records
+#
+#  id         :integer          not null, primary key
+#  city_id    :integer          not null
+#  month      :integer          not null
+#  temp       :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 1
+  month: 1
+  temp: 1
+
+two:
+  city_id: 1
+  month: 1
+  temp: 1
