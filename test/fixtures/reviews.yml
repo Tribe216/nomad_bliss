@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer          not null
+#  city_id    :integer          not null
+#  metric_id  :integer          not null
+#  score      :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  city_id: 1
+  metric_id: 1
+  score: 1
+
+two:
+  user_id: 1
+  city_id: 1
+  metric_id: 1
+  score: 1

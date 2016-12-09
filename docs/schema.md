@@ -13,39 +13,40 @@ session_token     | string    | not null, indexed, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-city_name       | string    | not null, indexed
-latitude        | integer   |
-longitude       | integer   |
+name       | string    | not null, indexed
+latitude        | float     | not null, indexed
+longitude       | float     | not null, indexed, unique: with latitude
 region_id       | integer   | not null, indexed, unique: with city_name
-thumb_img_url   | string    |
-large_img_url   | string    |
 
 ## regions
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-region_name | string    | not null
+name        | string    | not null
 
-## weathers
+## weather_records
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 city_id     | integer   | not null, indexed
-month       | integer   | not null
-temp        | integer   | not null
+month       | integer   | not null, indexed
+temp        | integer   | not null, indexed
 
-## scores
+## metrics
+
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-user_id         | integer   | not null, indexed
+name            | string    | not null, indexed, unique  
+
+## reviews
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+user_id         | integer   | not null, indexed, unique with city and metric
 city_id         | integer   | not null, indexed
-overall_score   | integer   | not null, in (1,2,3,4,5)
-cost_of_living  | integer   | not null, in (1,2,3,4,5)
-internet        | integer   | not null, in (1,2,3,4,5)
-safety          | integer   | not null, in (1,2,3,4,5)
-ease_of_working | integer   | not null, in (1,2,3,4,5)
-food_scene      | integer   | not null, in (1,2,3,4,5)
+metric_id       | integer   | not null, indexed
+score           | integer   |
 
 ## taggings
 column name | data type | details
@@ -58,7 +59,7 @@ tag_id      | integer   | not null, indexed, unique: with city_id
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-tag_name    | string    | not null, indexed, unique
+name        | string    | not null, indexed, unique
 
 ## messages
 column name   | data type | details
