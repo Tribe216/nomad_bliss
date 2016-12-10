@@ -51,13 +51,17 @@ usa_states = [
 "Wyoming"
 ]
 
-USA_STATES = [
-  "New Jersey",
-  "New York",
-  "Pennsylvania"
-]
+def get_states
+     [
+    "New Jersey",
+    "New York",
+    "Pennsylvania"
+  ]
+end
 
-CANADA_PROVINCES = [
-  "Quebec",
-  "Ontario"
-]
+def get_canada_provinces
+     [
+    "Quebec",
+    "Ontario"
+    ]
+end

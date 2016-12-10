@@ -30,7 +30,7 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 name        | string    | not null, indexed, unique
-code        | string    | not null, indexed, unique 
+code        | string    | not null, indexed, unique
 
 ## weather_records
 column name | data type | details

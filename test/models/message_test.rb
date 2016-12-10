@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: countries
+# Table name: messages
 #
 #  id         :integer          not null, primary key
-#  code       :string           not null
-#  name       :string           not null
+#  user_id    :integer          not null
+#  city_id    :integer          not null
+#  body       :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class CountryTest < ActiveSupport::TestCase
+class MessageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

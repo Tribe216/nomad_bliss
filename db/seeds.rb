@@ -4,59 +4,66 @@ require_relative './seeds/02_regions.rb'
 require_relative './seeds/03_cities.rb'
 require_relative './seeds/04_metrics.rb'
 require_relative './seeds/05_reviews.rb'
-# require_relative './seeds/08_messages.rb'
 require_relative './seeds/06_tags.rb'
 require_relative './seeds/07_taggings.rb'
+require_relative './seeds/08_messages.rb'
 require_relative './seeds/09_weather_records.rb'
 
-USERS.each { |user| User.create(user) }
+get_users.each { |user| User.create(user) }
 
 ###############################################################
 
-COUNTRIES.each { |country| Country.create(country) }
+get_countries.each { |country| Country.create(country) }
 
 ###############################################################
 
-USA_STATES.each do |state|
+get_states.each do |state|
   Region.create({name: state, country_code: "us"})
 end
 
-CANADA_PROVINCES.each do |province|
+get_canada_provinces.each do |province|
   Region.create({name: province, country_code: "ca"})
 end
 
 ###############################################################
-CITIES_NEAR_NYC.each do |city|
+get_cities.each do |city|
   City.create(city)
 end
 
 ###############################################################
 
-METRICS.each do |metric|
+get_metrics.each do |metric|
   Metric.create(metric)
 end
 
-###############################################################
 
-WEATHER_RECORDS.each do |weather|
-  WeatherRecord.create(weather)
-end
 
 ###############################################################
 
-REVIEWS.each do |review|
+get_reviews.each do |review|
   Review.create(review)
 end
 
 ###############################################################
 
-TAGS.each do |tag|
+get_tags.each do |tag|
   Tag.create(tag)
 end
 
 ###############################################################
 
-update_taggings
-TAGGINGS.each do |tagging|
+get_taggings.each do |tagging|
   Tagging.create(tagging)
+end
+
+###############################################################
+
+get_messages.each do |message|
+  Message.create(message)
+end
+
+###############################################################
+
+get_weather_records.each do |weather|
+  WeatherRecord.create(weather)
 end

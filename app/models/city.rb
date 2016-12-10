@@ -22,6 +22,7 @@ class City < ApplicationRecord
 
   delegate :country, :to => :region, :allow_nil => true
 
+  has_many :messages
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :weather_records
