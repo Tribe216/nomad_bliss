@@ -1,0 +1,20 @@
+{
+  searchFilters: {
+    metrics: {
+      fun: {
+        min: 5
+      },
+      internet: {
+        min: 6
+      }
+    },
+
+    weather: {
+
+    },
+
+    tags: [
+
+    ]
+  }
+}

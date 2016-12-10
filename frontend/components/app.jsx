@@ -1,6 +1,6 @@
 import React from 'react';
 import GreetingContainer from './greeting_container';
-import Home from './home'
+import Home from './home';
 import { Link } from 'react-router';
 
 const App = ({ children }) => (
@@ -13,9 +13,10 @@ const App = ({ children }) => (
         </span>
       </Link>
       <GreetingContainer />
-    </header>
-    { children }
 
+    </header>
+    <Home />
+    { children }
   </div>
 );
 

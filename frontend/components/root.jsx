@@ -1,8 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import App from './app'
+import App from './app';
 import SessionFormContainer from './session_form_container';
-import Home from './home'
+import Home from './home';
+import DetailContainer from './detail_container';
+import Filters from './filters';
+import Results from './results';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 const Root = ({ store }) => {
@@ -18,12 +21,11 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={Home}/>
-          <Route path="/home" component={ Home } />
+          <Route path="detail/:cityId" component={ DetailContainer } />
         </Route>
       </Router>
     </Provider>
-  )
+  );
 };
 
 export default Root;

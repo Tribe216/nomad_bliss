@@ -19,7 +19,7 @@ class City < ApplicationRecord
 
   belongs_to :region
 
-  # belongs_to :country, through: :region
+
   delegate :country, :to => :region, :allow_nil => true
 
   has_many :taggings
@@ -27,16 +27,72 @@ class City < ApplicationRecord
   has_many :weather_records
   has_many :reviews
 
-  def weather_hash
+  def metric_rejects(name, values)
+      (values[:min] && self.send(name) < values[:min]) ||
+      (values[:max] && self.send(name) > values[:max])
+  end
 
+  def month_integer(month)
+    unless month.is_a?(Integer)
+      Date::ABBR_MONTHNAMES.index(month) ||
+      Date::MONTHNAMES.index(month)
+    end
+  end
+
+  def self.filter_by(filter_hash)
+    match_cities = []
+    return self.rank(City.all) unless filter_hash
+    City.all.each do |city|
+      is_match = true;
+      filter_hash[:searchFilters][:metrics].each do |name, values|
+        if city.metric_rejects(name, values)
+          is_match = false
+          break
+        end
+      end
+
+      if filter_hash[:searchFilters][:weather]
+        wi = filter_hash[:searchFilters][:weather]
+        if wi[:month]
+          unless city.weather_for(wi[:month]).between?(wi[:min], wi[:max])
+            is_match = false
+            break
+          end
+        else
+          unless city.weather_for(wi[:month]).between?(wi[:min], wi[:max])
+            is_match = false
+            break
+          end
+        end
+
+      end
+
+      if filter_hash[:searchFilters][:tags]
+        tags = filter_hash[:searchFilters][:tags]
+        tags.each do |tag|
+          unless associated_tag_names.include? tag
+            is_match = false
+            break
+          end
+        end
+      end
+
+      match_cities << city if is_match
+    end
+
+    match_cities
   end
 
   def weather_for(month)
-    self.weather_records.select {|rec| rec.month == month}[:temp]
+    self.weather_records.find {|rec| rec.month == month}[temp]
   end
 
-  def average_temp(month)
-    # self.weather_records.inject{ |sum, el| sum + el }.to_f / reviews.size
+  def average_temp
+    self.weather_records.inject{ |sum, el| sum + el }.to_f / self.weather_records.count
+  end
+
+  def associated_tag_names
+    self.tags.pluck(:name)
   end
 
   def method_missing(metric_name)
@@ -46,7 +102,7 @@ class City < ApplicationRecord
     metric.average_for_city(self)
   end
 
-  def average_scores
+  def average_scores_indexed
     scores = Hash.new
     Metric.all.each do |metric|
       scores[metric.id] = Hash.new()
@@ -55,6 +111,20 @@ class City < ApplicationRecord
 
     scores
   end
+
+  def average_scores
+    scores = Hash.new()
+    Metric.all.each do |metric|
+      scores[metric.name] = metric.average_for_city(self)
+    end
+
+    scores
+  end
+
+  def with_stats
+    self.as_json.merge({scores: self.average_scores})
+  end
+
 
 
 end
