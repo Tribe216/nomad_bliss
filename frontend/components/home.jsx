@@ -1,8 +1,6 @@
 import React from 'react';
-import Filters from './filters';
-import Results from './results';
-
-
+import FiltersContainer from './filters_container';
+import ResultsContainer from './results_container';
 
 const Home = ({ children }) => {
 
@@ -13,8 +11,8 @@ const Home = ({ children }) => {
   return (
 
     <div className='home'>
-      Home Container
-
+      <FiltersContainer />
+      <ResultsContainer />
     </div>
   );
 };
