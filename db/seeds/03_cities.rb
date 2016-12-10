@@ -1,4 +1,5 @@
-CITIES_NEAR_NYC = [
+def get_cities
+   [
  {
    city_name: "New York",
    latitude: 40.730610,
@@ -68,6 +69,6 @@ CITIES_NEAR_NYC = [
    longitude: -71.2080,
    region_id: 4,
  }
-
-
 ]
+
+end

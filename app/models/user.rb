@@ -21,6 +21,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :reviews
+  has_many :messages
   has_many :cities, through: :reviews
   has_many :tags, through: :cities
 

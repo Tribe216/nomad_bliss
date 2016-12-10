@@ -1,5 +1,7 @@
-METRICS = [
-  { name: 'cost_of_living' },
-  { name: 'internet' },
-  { name: 'fun' }
-]
+def get_metrics
+     [
+    { name: 'cost_of_living' },
+    { name: 'internet' },
+    { name: 'fun' }
+  ]
+end
