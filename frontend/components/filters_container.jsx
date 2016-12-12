@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Filters from './filters';
+import { updateSearchResults } from '../actions/filters_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -8,6 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateSearchResults: (searchFilters) =>
+      dispatch(updateSearchResults(searchFilters))
   };
 };
 

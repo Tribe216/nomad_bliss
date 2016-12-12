@@ -3,7 +3,7 @@ import Results from './results';
 
 const mapStateToProps = (state) => {
   return {
-
+    results: state.results
   };
 };
 

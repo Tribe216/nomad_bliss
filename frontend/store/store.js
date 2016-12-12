@@ -6,7 +6,7 @@ const configureStore = ( preloadedState={} ) => {
   return createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(ReduxThunk))
+    applyMiddleware(ReduxThunk));
 };
 
 export default configureStore;
