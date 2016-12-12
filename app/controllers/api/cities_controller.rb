@@ -5,10 +5,10 @@ class Api::CitiesController < ApplicationController
   end
 
   def show
-    @city = City.find(params[:id])
+    @city = City.find(params[:id]).with_info
   end
 
   def search_params
-    params.permit(:searchFilters)
+    params
   end
 end

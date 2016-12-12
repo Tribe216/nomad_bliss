@@ -36,8 +36,6 @@ get_metrics.each do |metric|
   Metric.create(metric)
 end
 
-
-
 ###############################################################
 
 get_reviews.each do |review|

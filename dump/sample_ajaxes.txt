@@ -2,7 +2,7 @@
   searchFilters: {
     metrics: {
       fun: {
-        min: 5
+        min: 6
       },
       internet: {
         min: 6
@@ -17,4 +17,48 @@
 
     ]
   }
+}
+
+
+
+{
+  searchFilters: {
+    metrics: {
+    },
+
+    weather: {
+      min: 10,
+      max: 20,
+      month: 0
+    },
+
+    tags: [
+
+    ]
+  }
+}
+
+
+{
+  searchFilters: {
+    metrics: {
+
+    },
+
+    weather: {
+
+    },
+
+    tags: [
+      "beach"
+    ]
+  }
+}
+
+
+
+
+$.ajax {
+  type: 'GET',
+  url: 'api/cities'
 }
