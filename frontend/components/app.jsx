@@ -18,9 +18,11 @@ const App = ({ children }) => (
       <GreetingContainer />
 
     </header>
-    <FiltersContainer />
-    <ResultsContainer />
-    { children }
+    <main>
+      <FiltersContainer />
+      <ResultsContainer />
+      { children }
+    </main>
   </div>
 );
 

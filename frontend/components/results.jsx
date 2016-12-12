@@ -7,7 +7,7 @@ class Results extends React.Component {
   }
 
   render() {
-    let boxes = []
+    let boxes = [];
 
     if (this.props.results.length > 0) {
 
@@ -20,7 +20,7 @@ class Results extends React.Component {
               Rating: {result.scores.overall}<br />
             </article>
           </li>
-        )
+        );
       });
     } else {
       boxes.push(
@@ -29,13 +29,13 @@ class Results extends React.Component {
             No Results
           </article>
         </li>
-      )
+      );
     }
 
     return (
-      <div>
+      <section className="result-section">
         { boxes }
-      </div>
+      </section>
     );
   }
 }
