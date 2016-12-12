@@ -1,0 +1,43 @@
+.auth-button {
+
+
+  font-weight: bold;
+  border: 2px solid red;
+  border-radius: 5px;
+
+  text-transform: uppercase;
+
+  margin-left: 10px;
+  float: left;
+
+
+}
+
+div {
+  display: inline-block;
+}
+
+.active {
+  background-color: red;
+}
+
+.button-box {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px 0;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+
+}
+
+.button-box > button {
+  text-decoration: none;
+  text-transform: uppercase;
+  flex-grow: 1;
+  outline: 0;
+  padding: 10px 10px;
+  font-size: 12px;
+  transition: background-color 0.3s, color 0.0s;
+}

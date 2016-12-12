@@ -64,6 +64,7 @@ class City < ApplicationRecord
         metrics = filter_hash[:searchFilters][:metrics]
         metrics.each do |name, values|
           if city.metric_rejects(name, values)
+            is_match = false
             next
           end
         end

@@ -80,3 +80,8 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+}

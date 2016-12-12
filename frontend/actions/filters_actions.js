@@ -1,6 +1,6 @@
 export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 
-import * as ApiUtil from '../util/city_api_util';
+import * as CityApiUtil from '../util/city_api_util';
 
 export const receiveSearchResults = (results) => {
   return {
@@ -9,10 +9,9 @@ export const receiveSearchResults = (results) => {
   };
 };
 
-
 export function updateSearchResults(searchFilters) {
   return (dispatch) => {
-    return ApiUtil.fetchCities(searchFilters).then(
+    return CityApiUtil.fetchCities(searchFilters).then(
       (results) => {
         dispatch(receiveSearchResults(results));
       }
