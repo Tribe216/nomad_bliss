@@ -1,19 +1,53 @@
 .results-section {
   display: inline-flex;
   flex-flow: row wrap;
-  justify-content: fle;
+  justify-content: center;
 
 }
 
 .results-box {
-  width: 33%;
-  border: 12px solid white;
+  width: 31%;
+  border: 1px solid white;
   box-sizing: border-box;
   background-size: 100%;
   position: relative;
+  color: white;
+  margin: 10px;
+  text-shadow: 0 0 8px black;
 }
 
+.results-img-box {
+  overflow: hidden;
+}
+
+.results-box > img{
+  height: 100%;
+}
+
+
+
+
 .results-box:hover {
+  cursor: pointer;
+}
+
+.results-box:hover > .results-header-ranked {
+  color: rgba(255, 0, 0, 0.0);
+  text-shadow: 0 0 0;
+  /*transform: scale(1.03);*/
+}
+
+.results-box:hover > .results-header {
+  color: rgba(255, 0, 0, 0.0);
+  text-shadow: 0 0 0;
+  /*transform: scale(1.03);*/
+}
+
+.results-box:hover > .results-chart {
+  display: block;
+}
+
+.results-box:hover > .results-img-box {
   filter: blur(3px);
 }
 
@@ -26,32 +60,87 @@
   left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-  color: white;
-  font-size: 18px;
+
   font-weight: bold;
 }
 
-
-
 .results-header-city {
   white-space: nowrap;
-  font-size: 28px;
+  font-size: 4vw;
   display: block;
-  text-shadow: 0 0 8px black;
+
+}
+
+.results-header-region {
+  display: block;
+  font-size: 2vw;
 }
 
 .results-header-ranked {
   position: absolute;
-  left: 5px;
-  top: 5px;
-  font-size: 24px;
+  left: 20px;
+  top: 20px;
+  font-size: 2.5vw;
   display: block;
-  color: white;
-  text-shadow: 0 0 8px black;
+
 }
 
+.results-chart {
+  width: 98%;
+  position: absolute;
+  left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  display: none;
+  font-size: 16px;
+  font-weight: normal;
+}
 
-.results-header-region {
-  display: block;
-  text-shadow: 0 0 8px black;
+.results-chart-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.results-chart-label {
+  display:inline-block;
+   width:50%;
+  box-sizing: border-box;
+}
+
+.results-chart-bar-bg {
+  height: 25px;
+  position: relative;
+  display:inline-block;
+   width:50%;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.results-chart-bar-colored {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+.results-chart-bar-colored::after {
+  content: "";
+}
+
+@media (min-width: 800px) {
+  .results-header-city {
+    font-size: 32px;
+  }
+
+  .results-header-region {
+    font-size: 20px;
+  }
+
+  .results-header-ranked {
+    font-size: 24px;
+  }
 }
