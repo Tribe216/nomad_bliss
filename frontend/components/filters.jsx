@@ -1,5 +1,4 @@
 import React from 'react';
-import update from 'immutability-helper';
 import { merge } from 'lodash';
 
 const filterButton = (name, min, max) => {
