@@ -53,6 +53,7 @@
 }
 
 .session-submit{
+  display: block;
   border: 0;
   margin: 0 auto;
   font-size: 14px;

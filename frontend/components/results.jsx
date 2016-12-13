@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ResultsBox from './results_box';
 class Results extends React.Component {
 
   constructor(props) {
@@ -14,26 +14,19 @@ class Results extends React.Component {
       this.props.results.forEach( (result, idx) => {
 
         boxes.push(
-          <li>
-            <article className='result-box'>
-              Name: {result.city_name}<br />
-              Rating: {result.scores.overall}<br />
-            </article>
-          </li>
+            <ResultsBox result={result} rank={idx+1} />
         );
       });
     } else {
       boxes.push(
-        <li>
-          <article className='result-box'>
+          <article key='none' className='results-box'>
             No Results
           </article>
-        </li>
       );
     }
 
     return (
-      <section className="result-section">
+      <section className="results-section">
         { boxes }
       </section>
     );
