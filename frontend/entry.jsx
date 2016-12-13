@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 
 import { login, logout, signup } from './actions/session_actions';
 import { updateSearchResults } from './actions/filters_actions';
+import { updateCityDetail } from './actions/detail_actions';
 import { fetchCities } from './util/city_api_util';
 
 window.login = login;
@@ -13,6 +14,7 @@ window.logout = logout;
 window.signup = signup;
 window.updateSearchResults = updateSearchResults;
 window.fetchCities = fetchCities;
+window.updateCityDetail = updateCityDetail;
 
 // window.store = configureStore();
 

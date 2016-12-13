@@ -13,19 +13,7 @@
     newMessage: {errors: ["Message can't be blank"]},
   }
 
-  filters: {
-    region_id: 1,
-    cost_of_living: 3,
-    safety: 5,
-    month: 12,
-    temp: "cold"
-    tags: {
-      id: 1
-      name: "Public Transportation"
-    }
-  },
-
-  home_cities: {
+  results: {
     1: {
       city_name: "Cleveland",
       region_name: "Ohio",

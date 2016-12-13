@@ -29,8 +29,6 @@
 | "/sign-up"                              | "AuthFormContainer" |
 | "/sign-in"                              | "AuthFormContainer" |
 | "/home"                                 | "HomeContainer" |
-| "/home/filters"                         | "Filters" |
-| "/home/filters/:filterId"               | "FiltersItem" |
 | "/home/results"                         | "ResultsContainer" |
 | "/home/results/:resultId"               | "ResultsItem"
 | "/home/detail/:cityId"                  | "DetailContainer" |

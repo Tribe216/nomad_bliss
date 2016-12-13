@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Filters from './filters';
-import { updateSearchResults} from '../actions/filters_actions';
-import { updateTags} from '../actions/tag_actions';
+import { updateSearchResults} from '../../actions/filters_actions';
+import { updateTags} from '../../actions/tag_actions';
 
 const mapStateToProps = (state) => {
   return {

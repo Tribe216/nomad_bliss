@@ -1,7 +1,7 @@
 import React from 'react';
 import GreetingContainer from './greeting_container';
-import FiltersContainer from './filters_container';
-import ResultsContainer from './results_container';
+import FiltersContainer from './filters/filters_container';
+import ResultsContainer from './results/results_container';
 
 import Home from './home';
 import { Link } from 'react-router';

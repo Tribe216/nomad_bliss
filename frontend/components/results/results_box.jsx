@@ -1,66 +1,12 @@
 import React from 'react';
+import { barData } from '../../util/helpers';
 
 class Results extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.barData = {
-      0: {
-        width: 10,
-        color: 'red'
-      },
-
-      1: {
-        width: 10,
-        color: 'red'
-      },
-
-      2: {
-        width: 20,
-        color: 'red'
-      },
-
-      3: {
-        width: 30,
-        color: 'red'
-      },
-
-      4: {
-        width: 40,
-        color: 'red'
-      },
-
-      5: {
-        width: 50,
-        color: 'orange'
-      },
-
-      6: {
-        width: 60,
-        color: 'orange'
-      },
-
-      7: {
-        width: 70,
-        color: 'orange'
-      },
-
-      8: {
-        width: 80,
-        color: 'green'
-      },
-
-      9: {
-        width: 90,
-        color: 'green'
-      },
-
-      10: {
-        width: 100,
-        color: 'green'
-      }
-    }
+    this.barData = barData;
+    this.handleClick = this.handleClick.bind(this);
   }
 
   scoreBar(score) {
@@ -78,11 +24,19 @@ class Results extends React.Component {
     );
   }
 
+  handleClick(e) {
+    this.props.updateCityDetail(this.props.result.id).then(
+    this.props.openDetail);
+  }
+
   render() {
-
-
+    if (this.props.fake) {
+      return (
+        <article className='results-box fake' ></article>
+      );
+    }
     return (
-      <article className='results-box'>
+      <article className='results-box' onClick={this.handleClick}>
           <div className='results-img-box'>
             <img className='results-bg-image' src={window.city_bg} />
           </div>
