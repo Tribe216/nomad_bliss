@@ -2,7 +2,7 @@
 
   color: #003399;
   /*background-color: yellow;*/
-  padding: 10px;
+  padding: 10px 0px;
 
   display: flex;
   flex-flow: row nowrap;
@@ -26,7 +26,8 @@
 }
 
 .site-name {
-  font-size: 26px;
+  font-size: 28px;
+  color: black;
   /*background-color: teal;*/
 }
 
@@ -92,6 +93,7 @@
   background-size: 100%;
   background-position: top;
   transition: box-shadow 0.3s;
+  border: 0;
 }
 
 .profile-pic:hover {

@@ -1,24 +1,9 @@
-.auth-button {
-
-
-  font-weight: bold;
-  border: 2px solid red;
-  border-radius: 5px;
-
-  text-transform: uppercase;
-
-  margin-left: 10px;
-  float: left;
-
-
-}
-
-div {
-  display: inline-block;
+.filter-nav {
 }
 
 .active {
   background-color: red;
+  color: white
 }
 
 .button-box {
@@ -26,18 +11,93 @@ div {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  margin: 2px 0;
-  border: 2px solid #aaa;
-  border-radius: 5px;
+}
+
+.month-box {
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.temp-box {
 
 }
 
-.button-box > button {
+.button-box :first-child {
+  border-right: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  margin: 0;
+}
+
+.button-box :not(:first-child):not(:last-child) {
+  border-left: 1px solid #ccc;;
+  border-right: 1px solid #ccc;;
+  border-radius: 0px;
+  margin: 0;
+}
+
+.button-box :last-child {
+  border-left: 1px solid #ccc;
+  border-radius: 0 5px 5px 0;
+  margin: 0;
+}
+
+.filter-button {
+  display: inline;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
   text-decoration: none;
+  font-weight: bold;
+  background-color: white;
   text-transform: uppercase;
-  flex-grow: 1;
-  outline: 0;
-  padding: 10px 10px;
+  outline: none;
   font-size: 12px;
-  transition: background-color 0.3s, color 0.0s;
+  padding: 10px;
+  color: #777;
+  transition: border-color 0.3s, background-color 0.3s, color 0.0s;
+  width: 170px;
+  margin-top: 10px;
+}
+
+.weather-button {
+  min-width: 50 px;
+}
+
+.below-months {
+  display: inline-flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temp-button {
+  width: 111px;
+}
+
+.cost-button {
+  width: 111px;
+}
+
+.button-box > .filter-button {
+  margin: 0px 0px;
+}
+
+.weather-month-box > .filter-button {
+  width: 100px;
+}
+
+.active {
+  background-color: red;
+  border-color: red;
+  color: white;
+}
+
+
+.filter-button:hover {
+  cursor: pointer;
+  background-color: red;
+  border-color: red;
+  color: white;
 }

@@ -51,7 +51,6 @@ class City < ApplicationRecord
   def self.filter_by(filter_hash)
     match_cities = []
 
-
     City.all.each do |city|
 
       unless filter_hash[:searchFilters]
@@ -132,8 +131,6 @@ class City < ApplicationRecord
 
     scores
   end
-
-
 
   def with_info
     self.as_json.merge({

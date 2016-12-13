@@ -58,11 +58,91 @@ class Filters extends React.Component {
       }
     ];
 
+    this.costRanges = [
+      {
+        label: "$",
+        max: 750
+      },
+      {
+        label: "$$",
+        max: 1500
+      },
+      {
+        label: "$$$",
+        max: 2500
+      },
+      {
+        label: "$$$$",
+        min: 2500.01
+      }
+    ];
+
+    this.metrics = [
+      {
+        name: "overall",
+        label: "Good Reviews",
+        min: 6
+      },
+      {
+        name: "internet",
+        label: "Good Internet",
+        min: 6
+      },
+      {
+        name: "food_scene",
+        label: "Good Food",
+        min: 6
+      },
+      {
+        name: "dryness",
+        label: "Dry Weather",
+        min: 6
+      },
+      {
+        name: "outdoors",
+        label: "Nature",
+        min: 6
+      },
+      {
+        name: "safety",
+        label: "Safe",
+        min: 6
+      },
+      {
+        name: "lgbt",
+        label: "LGBT Friendly",
+        min: 6
+      },
+      {
+        name: "coworking",
+        label: "Co Working",
+        min: 6
+      },
+      {
+        name: "english",
+        label: "Good English",
+        min: 6
+      },
+      {
+        name: "clean_air",
+        label: "Clean Air",
+        min: 6
+      }
+    ];
+
     this.toggleWeatherMonth = this.toggleWeatherMonth.bind(this);
     this.toggleMetric = this.toggleMetric.bind(this);
+    this.toggleCostOfLiving = this.toggleCostOfLiving.bind(this);
     this.setWeatherMonth = this.setWeatherMonth.bind(this);
-    this.setActive = this.setActive.bind(this);
+    this.toggleActive = this.toggleActive.bind(this);
+    this.resetFilters = this.resetFilters.bind(this);
+    this.setcostRange = this.setcostRange.bind(this);
+  }
 
+  resetFilters() {
+    this.setState({ searchFilters: {} });
+    this.setState({ activeFilters: [] });
+    this.props.updateSearchResults.bind(this, this.state);
   }
 
   setWeatherMonth(newMonth=null) {
@@ -80,7 +160,6 @@ class Filters extends React.Component {
   setWeatherTemp(newTemp=null) {
     let actives = merge([], this.state.activeFilters);
 
-
     let allRanges = this.weatherRanges.map( (range) => {
       return range.label;
     });
@@ -94,7 +173,27 @@ class Filters extends React.Component {
     this.setState({ activeFilters: actives });
   }
 
-  setActive(buttonLabel) {
+  setcostRange(newRange=null) {
+    let actives = merge([], this.state.activeFilters);
+
+    let allRanges = this.costRanges.map( (range) => {
+      return range.label;
+    });
+
+    actives.remove(...allRanges);
+
+    if (newRange) {
+      actives.push(newRange.label);
+    }
+
+    this.setState({ activeFilters: actives });
+  }
+
+  isActive(buttonLabel) {
+    return this.state.activeFilters.includes(buttonLabel);
+  }
+
+  toggleActive(buttonLabel) {
     let actives = merge([], this.state.activeFilters);
 
     if (actives.includes(buttonLabel)) {
@@ -119,21 +218,27 @@ class Filters extends React.Component {
     this.props.updateSearchResults(this.state.searchFilters);
   }
 
-  toggleTag(tagName) {
-    let newFilters = merge({}, this.state.searchFilters);
-    if (newFilters.tags.includes(tagName)) {
-      newFilters.tags.remove(tagName);
-    } else {
-      newFilters.tags.push(tagName);
-    }
+  weatherMonthButtons() {
+    const buttons = [];
 
-    this.setActive(tagName);
-    this.setState({ searchFilters: newFilters });
+    this.monthNames.forEach( (monthAbbr, idx) => {
+      let _className = this.state.activeFilters.includes(monthAbbr) ?
+        "filter-button weather-button active" : "weather-button filter-button";
+
+      buttons.push(
+        <button className={_className} key={monthAbbr} onClick={ this.toggleWeatherMonth.bind(this, monthAbbr, idx) }>
+          {monthAbbr}
+        </button>
+      );
+    });
+
+    return (
+      <span className="button-box month-box">{buttons}</span>
+    );
   }
 
   toggleWeatherMonth(monthAbbr, monthCode) {
     let newFilters = merge({}, this.state.searchFilters);
-
 
     const currentMonth = this.state.searchFilters.weather.month;
     if (monthCode === currentMonth) {
@@ -147,28 +252,21 @@ class Filters extends React.Component {
     this.setState({ searchFilters: newFilters });
   }
 
-  toggleMetric(metric) {
-    let newFilters = merge({}, this.state.searchFilters);
+  weatherRangeButtons() {
+    const buttons = [];
 
-    if(newFilters.metrics[metric.name] &&
-       newFilters.metrics[metric.name].min === metric.min &&
-       newFilters.metrics[metric.name].max === metric.max
-    ) {
-      delete newFilters.metrics[metric.name];
-    } else {
-      newFilters.metrics[metric.name] = {};
-      if (metric.min !== undefined) {
-        newFilters.metrics[metric.name]['min'] = metric.min;
-      }
+    this.weatherRanges.forEach( (range, idx) => {
+      let _className = this.state.activeFilters.includes(range.label) ?
+        "temp-button filter-button active" : "temp-button filter-button";
 
-      if (metric.max !== undefined) {
-        newFilters.metrics[metric.name]['max'] = metric.max;
-      }
+      buttons.push(
+        <button className={_className} key={range.label} onClick={ this.toggleWeatherRange.bind(this, range) }>
+          { range.label }
+        </button>
+      );
+    });
 
-    }
-
-    this.setActive(metric.label);
-    this.setState({ searchFilters: newFilters });
+    return  [<span className="temp-box button-box group">{buttons}</span>];
   }
 
   toggleWeatherRange(range) {
@@ -188,125 +286,133 @@ class Filters extends React.Component {
     this.setState({ searchFilters: newFilters });
   }
 
-  weatherMonthButtons() {
+  costOfLivingButtons() {
     const buttons = [];
 
-    this.monthNames.forEach( (monthAbbr, idx) => {
-      let _className = this.state.activeFilters.includes(monthAbbr) ?
-        "month-button active" : "month-button";
-
-      buttons.push(
-        <button className={_className} key={monthAbbr} onClick={ this.toggleWeatherMonth.bind(this, monthAbbr, idx) }>
-          {monthAbbr}
-        </button>
-      );
-    });
-
-    return (
-      <span className="button-box month-button-list">{buttons}</span>
-    );
-  }
-
-  weatherRangeButtons() {
-    const buttons = [];
-
-    this.weatherRanges.forEach( (range, idx) => {
+    this.costRanges.forEach( (range, idx) => {
       let _className = this.state.activeFilters.includes(range.label) ?
-        "weather-range-button active" : "weather-range-button";
+        "cost-button filter-button active" : "cost-button filter-button";
 
       buttons.push(
-        <button className={_className} key={range.label} onClick={ this.toggleWeatherRange.bind(this, range) }>
+        <button className={_className} key={range.label} onClick={ this.toggleCostOfLiving.bind(this, range) }>
           { range.label }
         </button>
       );
     });
 
-    return (
-      <span className="button-box group">{buttons}</span>
-    );
+    return  [<span className="cost-box button-box group">{buttons}</span>];
+  }
+
+  toggleCostOfLiving(range) {
+    let newFilters = merge({}, this.state.searchFilters);
+    // debugger
+    if (this.state.activeFilters.includes(range.label)) {
+      delete newFilters.metrics['cost_of_living'];
+      this.setcostRange();
+    } else {
+      newFilters.metrics['cost_of_living'] = {};
+      if (range.min) {
+        newFilters.metrics['cost_of_living']['min'] = range.min;
+      }
+
+      if (range.max) {
+        newFilters.metrics['cost_of_living']['max'] = range.max;
+      }
+
+      this.setcostRange(range);
+    }
+
+    this.setState({ searchFilters: newFilters });
   }
 
   metricButtons() {
-    const metrics = [
-      {
-        name: "overall",
-        label: "Good Reviews",
-        min: 6
-      },
-      {
-        name: "cost_of_living",
-        label: "Cheap",
-        max: 6
-      },
-      {
-        name: "internet",
-        label: "Good Internet",
-        min: 6
-      },
-      {
-        name: "fun",
-        label: "Fun",
-        min: 6
-      },
-      {
-        name: "fun",
-        label: "Boring",
-        max: 5
-      }
-    ];
-
     const buttons = [];
 
-    metrics.forEach( (metric, idx) => {
+    this.metrics.forEach( (metric, idx) => {
       let _className = this.state.activeFilters.includes(metric.label) ?
-        "metric-button active" : "metric-button ";
+        "filter-button active" : "filter-button ";
 
       buttons.push(
-          <span className="button-box group"><button className={_className} key={metric.label} onClick={ this.toggleMetric.bind(this, metric) }>
+          <button className="filter-button" className={_className} key={metric.label} onClick={ this.toggleMetric.bind(this, metric) }>
           { metric.label }
-        </button></span>
+        </button>
 
       );
     });
 
-    return (
-      <div>{buttons}</div>
-    );
+    return buttons;
+  }
+
+  toggleMetric(metric) {
+    let newFilters = merge({}, this.state.searchFilters);
+
+
+    if(newFilters.metrics[metric.name] &&
+       newFilters.metrics[metric.name].min === metric.min &&
+       newFilters.metrics[metric.name].max === metric.max
+    ) {
+      delete newFilters.metrics[metric.name];
+    } else {
+      newFilters.metrics[metric.name] = {};
+      if (metric.min !== undefined) {
+        newFilters.metrics[metric.name]['min'] = metric.min;
+      }
+
+      if (metric.max !== undefined) {
+        newFilters.metrics[metric.name]['max'] = metric.max;
+      }
+    }
+
+    this.toggleActive(metric.label);
+    this.setState({ searchFilters: newFilters });
   }
 
   tagButtons() {
-
     const buttons = [];
     if (this.props.tags) {
       this.props.tags.forEach( (tagName, idx) => {
         let _className = this.state.activeFilters.includes(tagName) ?
-          "tag-button active" : "tag-button ";
+          "filter-button active" : "filter-button ";
 
         buttons.push(
-            <span className="button-box group"><button key={tagName} className={_className} onClick={ this.toggleTag.bind(this, tagName) }>
+            <button className="filter-button" key={tagName} className={_className} onClick={ this.toggleTag.bind(this, tagName) }>
             { tagName }
-          </button></span>
+          </button>
         );
       });
     }
 
-    return (
-      <div>{buttons}</div>
-    );
+    return buttons;
   }
 
+  toggleTag(tagName) {
+    let newFilters = merge({}, this.state.searchFilters);
+    if (newFilters.tags.includes(tagName)) {
+      newFilters.tags.remove(tagName);
+    } else {
+      newFilters.tags.push(tagName);
+    }
+
+    this.toggleActive(tagName);
+    this.setState({ searchFilters: newFilters });
+  }
 
   render() {
-    // { JSON.stringify(this.state) }
+    // { JSON.stringify(this.state); }
+    let aa = this.weatherRangeButtons();
+    let bb = this.costOfLivingButtons();
+    let cc = this.metricButtons();
+    let dd = this.tagButtons();
+
+    let lowButtons = aa.concat(bb).concat(cc).concat(dd);
+
     return (
       <nav className="filter-nav">
-
         { this.weatherMonthButtons() }
-        { this.weatherRangeButtons() }
-        { this.metricButtons() }
-        { this.tagButtons() }
+        <section className="below-months">
+          { lowButtons }
+          </section>
         <br />
-        <button onClick={ this.props.updateSearchResults.bind(this, this.state) }> UPDATE </button>
       </nav>
     );
   }

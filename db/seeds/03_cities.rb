@@ -15,6 +15,27 @@ def get_cities
  },
 
  {
+   city_name: "King of Prussia",
+   latitude: 40.104794,
+   longitude: -75.384392,
+   region_id: 3,
+ },
+
+ {
+   city_name: "Lansdale",
+   latitude: 40.240159,
+   longitude: -75.275902,
+   region_id: 3,
+ },
+
+ {
+   city_name: "Allentown",
+   latitude: 40.611279,
+   longitude: -75.483269,
+   region_id: 3,
+ },
+
+ {
    city_name: "Newark",
    latitude: 40.735657,
    longitude: -74.172363,
@@ -29,17 +50,52 @@ def get_cities
  },
 
  {
+   city_name: "Farmingdale",
+   latitude:  40.732143,
+   longitude: -73.457120,
+   region_id: 2,
+ },
+
+ {
+   city_name: "Poughkeepsie",
+   latitude:  41.723526,
+   longitude: -73.928839,
+   region_id: 2
+ },
+
+ {
    city_name: "Trenton",
    latitude: 40.217053,
    longitude: -74.742938,
-   region_id: 1,
+   region_id: 1
+ },
+
+ {
+   city_name: "Toms River",
+   latitude: 39.951141,
+   longitude: -74.179498,
+   region_id: 1
+ },
+
+ {
+   city_name: "Atlantic City",
+   latitude: 39.359971,
+   longitude: -74.426024,
+   region_id: 1
+ },
+
+ {
+   city_name: "Ocean City",
+   latitude: 39.277443,
+   longitude: -74.572605,
+   region_id: 1
  },
 
  {
    city_name: "Scranton",
    latitude: 41.408970,
    longitude: -75.662415,
-   region_id: 3,
+   region_id: 3
  },
 
  {

@@ -1,4 +1,10 @@
-
+def generate_score(metric_id)
+  if Metric.find(metric_id).name == 'cost_of_living'
+    return rand(300..3500)
+  else
+    return rand(1...10)
+  end
+end
 
 def get_reviews
   reviews = []
@@ -10,7 +16,7 @@ def get_reviews
           user_id: user_id,
           city_id: city_id,
           metric_id: metric_id,
-          score: rand(1..10)
+          score: generate_score(metric_id)
         }
       end
     end
