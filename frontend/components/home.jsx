@@ -1,6 +1,6 @@
 import React from 'react';
-import FiltersContainer from './filters_container';
-import ResultsContainer from './results_container';
+import FiltersContainer from './filters/filters_container';
+import ResultsContainer from './results/results_container';
 
 const Home = ({ children }) => {
 

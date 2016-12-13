@@ -5,3 +5,10 @@ export const fetchCities = (searchFilters) => {
     data: { searchFilters }
   });
 };
+
+export const fetchCityDetail = (cityId) => {
+  return $.ajax({
+    type: "GET",
+    url: `api/cities/${cityId}`
+  });
+};

@@ -1,19 +1,19 @@
 .results-section {
   display: inline-flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-between;
 
 }
 
 .results-box {
-  width: 31%;
+  width: 32.3%;
   border: 1px solid white;
   box-sizing: border-box;
   background-size: 100%;
   position: relative;
   color: white;
-  margin: 10px;
   text-shadow: 0 0 8px black;
+  margin-top: 10px;
 }
 
 .results-img-box {
@@ -23,9 +23,6 @@
 .results-box > img{
   height: 100%;
 }
-
-
-
 
 .results-box:hover {
   cursor: pointer;
@@ -51,6 +48,10 @@
   filter: blur(3px);
 }
 
+.fake:hover {
+  cursor: default;
+}
+
 .results-bg-image {
   width: 100%;
 }
@@ -73,15 +74,17 @@
 
 .results-header-region {
   display: block;
+  text-align: center;
   font-size: 2vw;
 }
 
 .results-header-ranked {
   position: absolute;
-  left: 20px;
-  top: 20px;
+  left: 15px;
+  top: 15px;
   font-size: 2.5vw;
   display: block;
+  text-decoration: underline;
 
 }
 
@@ -116,7 +119,7 @@
   display:inline-block;
    width:50%;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .results-chart-bar-colored {

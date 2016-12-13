@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Results from './results';
+import { updateCityDetail } from '../../actions/detail_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -9,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    updateCityDetail: (cityId) => dispatch(updateCityDetail(cityId))
   };
 };
 
