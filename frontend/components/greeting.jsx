@@ -31,8 +31,9 @@ class Greeting extends Component {
     return (
       <div className='auth-box group'>
         <div className="profile-pic" to="/profile" style={divStyle}>
-          <div />
+      
         </div>
+        <figcaption className="profile-name" > { this.props.currentUser.user.username } </figcaption>
         <button className="auth-button red-box" onClick={this.props.logout} >Log Out</button>
       </div>
     );
