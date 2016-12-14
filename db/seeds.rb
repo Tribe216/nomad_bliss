@@ -28,6 +28,7 @@ end
 ###############################################################
 get_cities.each do |city|
   created_city = City.create(city)
+  puts created_city
   created_city.image = File.open("app/assets/images/cities/#{created_city.id.to_s}.jpg")
   created_city.save!
 
