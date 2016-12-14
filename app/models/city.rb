@@ -2,13 +2,17 @@
 #
 # Table name: cities
 #
-#  id         :integer          not null, primary key
-#  city_name  :string           not null
-#  latitude   :float            not null
-#  longitude  :float            not null
-#  region_id  :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :integer          not null, primary key
+#  city_name          :string           not null
+#  latitude           :float            not null
+#  longitude          :float            not null
+#  region_id          :integer          not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class City < ApplicationRecord
@@ -16,6 +20,10 @@ class City < ApplicationRecord
   validates :city_name, :latitude, :longitude, :region_id, presence: true
   validates :city_name, uniqueness: { scope: :region_id }
   validates :longitude, uniqueness: { scope: :latitude }
+
+  has_attached_file :image, default_url: "generic_city.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
 
   belongs_to :region
   delegate :country, :to => :region, :allow_nil => true
@@ -27,6 +35,10 @@ class City < ApplicationRecord
   has_many :reviews
 
   default_scope { order(created_at: :desc) }
+
+  def image_url
+    self.image.url
+  end
 
   def metric_rejects(name, values)
     (values[:min] && self.send(name) < values[:min].to_f) ||
@@ -137,7 +149,8 @@ class City < ApplicationRecord
       country_name: self.country_name,
       region_name: self.region_name,
       scores: self.average_scores,
-      tags: self.tag_names
+      tags: self.tag_names,
+      image_url: self.image_url
     }).as_json
   end
 

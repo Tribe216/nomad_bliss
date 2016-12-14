@@ -10,18 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214005046) do
+ActiveRecord::Schema.define(version: 20161214151340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
-    t.string   "city_name",  null: false
-    t.float    "latitude",   null: false
-    t.float    "longitude",  null: false
-    t.integer  "region_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "city_name",          null: false
+    t.float    "latitude",           null: false
+    t.float    "longitude",          null: false
+    t.integer  "region_id",          null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["city_name", "region_id"], name: "index_cities_on_city_name_and_region_id", unique: true, using: :btree
     t.index ["latitude", "longitude"], name: "index_cities_on_latitude_and_longitude", unique: true, using: :btree
   end
@@ -84,11 +88,15 @@ ActiveRecord::Schema.define(version: 20161214005046) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "username",            null: false
+    t.string   "password_digest",     null: false
+    t.string   "session_token",       null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 

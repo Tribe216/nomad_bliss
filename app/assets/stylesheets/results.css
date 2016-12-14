@@ -14,7 +14,29 @@
   color: white;
   text-shadow: 0 0 8px black;
   margin-top: 10px;
+  background-color: transparent;
 }
+
+.results-box:before {
+    content: "";
+    float: left;
+
+    /* essentially the aspect ratio. 100% means the
+       div will remain 100% as tall as it is wide, or
+       square in other words.  */
+    padding-bottom: 70%;
+}
+/* this is a clearfix. you can use whatever
+   clearfix you usually use, add
+   overflow:hidden to the parent element,
+   or simply float the parent container. */
+.results-box:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
 
 .results-img-box {
   overflow: hidden;
@@ -54,6 +76,7 @@
 
 .results-bg-image {
   width: 100%;
+
 }
 
 .results-header {

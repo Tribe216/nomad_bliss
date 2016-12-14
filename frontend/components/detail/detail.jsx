@@ -70,6 +70,7 @@ class Detail extends React.Component {
         <DetailHeader
           cityName={this.props.cityDetails.city_name}
           regionName={this.props.cityDetails.region_name}
+          imageUrl={this.props.cityDetails.image_url}
         />
         <section className='detail-chart'>
           {this.getScoreBars()}

@@ -35,16 +35,18 @@ class Results extends React.Component {
         <article className='results-box fake' ></article>
       );
     }
+
     return (
       <article className='results-box' onClick={this.handleClick}>
-          <div className='results-img-box'>
-            <img className='results-bg-image' src={window.city_bg} />
-          </div>
-          <span className='results-header-ranked'>{this.props.rank}</span>
-          <span className='results-header'>
-            <span className='results-header-city'>{this.props.result.city_name}</span>
-            <span className='results-header-region'>{this.props.result.region_name}</span>
-          </span>
+
+        <div className='results-img-box'>
+          <img className='results-bg-image' src={this.props.result.image_url} />
+        </div>
+        <span className='results-header-ranked'>{this.props.rank}</span>
+        <span className='results-header'>
+          <span className='results-header-city'>{this.props.result.city_name}</span>
+          <span className='results-header-region'>{this.props.result.region_name}</span>
+        </span>
         <figure className='results-chart'>
           <div className='results-chart-row'>
             <span className='results-chart-label'>Overall</span>

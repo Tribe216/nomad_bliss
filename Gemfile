@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'figaro'
+gem 'aws-sdk', '>= 2.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

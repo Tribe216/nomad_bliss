@@ -23,9 +23,9 @@ class Greeting extends Component {
       Modal.setAppElement('body');
    }
 
-  userLoggedInGreeting (username, logout) {
+  userLoggedInGreeting (currentUser, logout) {
     const divStyle = {
-      backgroundImage: 'url(' + window.profile_pic + ')'
+      backgroundImage: 'url(' + currentUser.user.image_url + ')'
     };
 
     return (
@@ -57,7 +57,7 @@ class Greeting extends Component {
 
   authBox(currentUser) {
     if (this.props.currentUser) {
-      return this.userLoggedInGreeting(this.props.currentUser.username, logout);
+      return this.userLoggedInGreeting(this.props.currentUser, this.props.logout);
     } else {
       return this.userLoggedOutGreeting();
     }
