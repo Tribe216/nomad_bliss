@@ -14,7 +14,7 @@
   color: white;
   text-shadow: 0 0 8px black;
   margin-top: 10px;
-  background-color: transparent;
+  background-color: #ddd;
 }
 
 .results-box:before {
