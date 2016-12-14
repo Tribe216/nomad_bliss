@@ -36,7 +36,7 @@ class SessionForm extends Component {
       username: 'guest',
       password: 'guestymcguestface',
       formType: 'login'
-    }).then(this.processForm);
+    }, this.processForm);
   }
 
   getWrappedUser() {
