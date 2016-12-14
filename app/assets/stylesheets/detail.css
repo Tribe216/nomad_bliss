@@ -2,7 +2,8 @@
   height: 80vh;
   width: 80vw;
   min-width: 600px;
-  min-height: 600px;
+  min-height: 500px;
+  max-width: 850px;
   background-color: white;
   border-radius: 20px;
 }

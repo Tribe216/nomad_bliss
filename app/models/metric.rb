@@ -6,6 +6,7 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  long_name  :string           not null
 #
 
 class Metric < ApplicationRecord

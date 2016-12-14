@@ -8,7 +8,7 @@ class DetailHeader extends React.Component {
   render() {
     return (
       <header className='detail-header'>
-        <img className='detail-bg-image' src={window.city_bg} />
+        <img className='detail-bg-image' src={this.props.imageUrl} />
         <section className='detail-header-box'>
           <div className='detail-header-city'>{this.props.cityName}</div>
           <div className='detail-header-region'>{this.props.regionName}</div>
