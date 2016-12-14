@@ -14,18 +14,13 @@ const customStyles = {
     bottom                : 'auto',
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
-
-    // position                   : 'absolute',
-    // top                        : '40px',
-    // left                       : '40px',
-    // right                      : '40px',
-    // bottom                     : '40px',
     background                 : '#fff',
     overflow                   : 'auto',
     WebkitOverflowScrolling    : 'touch',
     outline                    : 'none',
     padding                    : '0',
-    borderRadius               : '10px'
+    borderRadius               : '10px',
+    border                     : '0px solid transparent'
 
   }
 };

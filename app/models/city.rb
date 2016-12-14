@@ -51,7 +51,7 @@ class City < ApplicationRecord
   def self.filter_by(filter_hash)
     match_cities = []
 
-    City.all.each do |city|
+    City.includes(:weather_records, :tags, :reviews).each do |city|
 
       unless filter_hash[:searchFilters]
         match_cities << city

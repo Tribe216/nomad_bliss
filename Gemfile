@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker'
 
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
