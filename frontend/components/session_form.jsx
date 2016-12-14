@@ -43,7 +43,10 @@ class SessionForm extends Component {
     const formData = new FormData();
     formData.append("user[username]", this.state.username );
     formData.append("user[password]", this.state.password );
-    formData.append("user[avatar]", this.state.imageFile );
+    if (this.state.imageFile) {
+      formData.append("user[avatar]", this.state.imageFile );
+    }
+
     return formData;
   }
 
