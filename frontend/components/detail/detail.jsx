@@ -1,15 +1,20 @@
 import React from 'react';
-import { barData } from '../../util/helpers';
+import { barData, metricLongNames } from '../../util/helpers';
+import DetailHeader from './detail_header';
 
 class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.barData = barData;
-
+    this.metricLongNames = metricLongNames;
+    this.getScoreBars = this.getScoreBars.bind(this);
+    this.scoreBar = this.scoreBar.bind(this);
+    this.costToScore = this.costToScore.bind(this);
   }
 
   scoreBar(score) {
     const baseScore = Math.ceil(score);
+
     return   (
       <span className='detail-bar-bg'>
         <span className='detail-bar-colored'
@@ -18,39 +23,58 @@ class Detail extends React.Component {
             backgroundColor: this.barData[baseScore].color,
             color: this.barData[baseScore].color
           }}>
+          <span className='detail-color-bar-label'>{ this.barData[baseScore].label }</span>
         </span>
       </span>
     );
   }
 
+  costToScore(costOfLiving) {
+    return Math.ceil((3500 - costOfLiving) / 320);
+  }
+
+  getScoreBars() {
+    const scores = this.props.cityDetails.scores;
+
+    const bars = [];
+    let val = null;
+    let longName = null;
+
+    Object.keys(scores).forEach( (key, index) => {
+
+      longName = this.metricLongNames[key];
+
+      if (key === 'cost_of_living') {
+        val = this.scoreBar(this.costToScore(scores[key]));
+      } else {
+        val = this.scoreBar(scores[key]);
+      }
+
+      bars.push(
+        <div className='detail-chart-element'>
+          <span className='detail-chart-label'>{ longName }</span>
+            { val }
+        </div>
+      );
+    });
+
+    return bars;
+  }
+
+
+
   render() {
-    if (!this.props.cityDetails) {
-      return (<div></div>);
-    }
 
     return (
-      <div>
-      <div className='results-chart-row'>
-        <span className='results-chart-label'>Overall</span>
-          { this.scoreBar(this.props.cityDetails.scores.overall)}
-      </div>
-
-      <div className='results-chart-row'>
-        <span className='results-chart-label'>Fun</span>
-          { this.scoreBar(this.props.cityDetails.scores.fun)}
-      </div>
-
-      <div className='results-chart-row'>
-        <span className='results-chart-label'>Safety</span>
-          { this.scoreBar(this.props.cityDetails.scores.safety)}
-      </div>
-
-      <div className='results-chart-row'>
-        <span className='results-chart-label'>Internet</span>
-          { this.scoreBar(this.props.cityDetails.scores.internet)}
-      </div>
-        <button onClick={this.props.closeModal}>Close Me </button>
-      </div>
+      <section className='detail-modal'>
+        <DetailHeader
+          cityName={this.props.cityDetails.city_name}
+          regionName={this.props.cityDetails.region_name}
+        />
+        <section className='detail-chart'>
+          {this.getScoreBars()}
+        </section>
+      </section>
     );
 
   }

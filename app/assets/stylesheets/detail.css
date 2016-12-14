@@ -1,0 +1,106 @@
+.detail-modal {
+  height: 80vh;
+  width: 80vw;
+  min-width: 600px;
+  min-height: 600px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.detail-bg-image {
+  position: relative;
+  width: 100%;
+  bottom: 200px;
+}
+
+.detail-header {
+  height: 160px;
+  width: 100%;
+  background-color: green;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-header-box {
+  font-size: 32px;
+  position: absolute;
+  left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 8px black;
+  box-sizing: border-box;
+  border: 0px solid white;
+}
+
+.detail-header-city {
+  font-size: 48px;
+  white-space: nowrap;
+}
+
+.detail-header-region {
+  margin-top: 10px;
+  font-size: 32px;
+  text-align: center;
+}
+
+
+.detail-chart {
+  width: 100%;
+  margin: 0 auto;
+
+  display: inline-flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  font-size: 16px;
+  font-weight: normal;
+  padding: 10px;
+}
+
+.detail-chart-element {
+  width: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.detail-chart-label {
+  display:inline-block;
+   width: 48%;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.detail-bar-bg {
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  width: 48%;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-right:30px;
+}
+
+.detail-bar-colored {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+.detail-color-bar-label {
+  position: absolute;
+  left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 1px 1px 1px #aaa;
+}

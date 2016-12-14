@@ -23,7 +23,6 @@ class DetailScoreBar extends React.Component {
   }
 
   render() {
-    debugger
     return (
       this.scoreBar(this.props.score)
     );
