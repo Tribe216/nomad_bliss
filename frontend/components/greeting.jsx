@@ -20,8 +20,8 @@ class Greeting extends Component {
   }
 
   componentWillMount() {
-      Modal.setAppElement('body');
-   }
+    Modal.setAppElement('body');
+  }
 
   userLoggedInGreeting (currentUser, logout) {
     const divStyle = {

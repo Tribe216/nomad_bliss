@@ -7,7 +7,9 @@ class SessionForm extends Component {
       username: "",
       password: "",
       formType: this.props.initialFormType,
-      timeStamp: new Date()
+      timeStamp: new Date(),
+      imageFile: null,
+      imageUrl: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,6 +19,8 @@ class SessionForm extends Component {
     this.loginGuest = this.loginGuest.bind(this);
     this.processForm = this.processForm.bind(this);
     this.clearForm = this.clearForm.bind(this);
+    this.updateFile = this.updateFile.bind(this);
+    this.getWrappedUser = this.getWrappedUser.bind(this);
   }
 
   componentDidMount() {
@@ -28,33 +32,49 @@ class SessionForm extends Component {
   }
 
   loginGuest() {
-    this.processForm({
+    this.setState({
       username: 'guest',
       password: 'guestymcguestface',
       formType: 'login'
-    });
+    }).then(this.processForm);
   }
 
-  getWrappedUser(stateData) {
-    return {
-      user : {
-        username: stateData.username,
-        password: stateData.password
-      }
-    };
+  getWrappedUser() {
+    const formData = new FormData();
+    formData.append("user[username]", this.state.username );
+    formData.append("user[password]", this.state.password );
+    formData.append("user[avatar]", this.state.imageFile );
+    return formData;
   }
 
-  processForm(stateData=this.state) {
-    if (stateData.formType === 'signup') {
-      this.props.processFormSignup(this.getWrappedUser(stateData)).then(
+  processForm() {
+    if (this.state.formType === 'signup') {
+      this.props.processFormSignup(this.getWrappedUser()).then(
         () => this.props.closeModal());
     } else {
-      this.props.processFormLogin(this.getWrappedUser(stateData)).then(
+      this.props.processFormLogin(this.getWrappedUser()).then(
         () => this.props.closeModal());
     }
   }
 
+  updateFile(e) {
+    const file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+
+    fileReader.onloadend = function () {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    }.bind(this);
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
+
+  }
+
   handleSubmit(e) {
+
     e.preventDefault();
     this.clearForm();
     this.processForm();
@@ -95,6 +115,27 @@ class SessionForm extends Component {
     }
   }
 
+  imageInput() {
+    if (this.state.formType === 'login') {
+      return ( "" );
+    } else {
+      return (
+        <div className="session-image-upload-box">
+          <label className="session-submit session-upload-button">
+          <input
+            className='session-image-input'
+            name='input-el'
+            type='file'
+            onChange={this.updateFile}
+           />
+           Upload Profile Pic</label>
+           <div className="session-image-preview" ><img src={this.state.imageUrl} /></div>
+         </div>
+      );
+    }
+
+  }
+
   render() {
     const headerText = (this.state.formType === 'signup') ?
       'Sign Up' : 'Login';
@@ -130,9 +171,11 @@ class SessionForm extends Component {
               value={this.state.password}
              />
           <br />
-          <div className='session-bottom'>
-            <input className='session-submit' type='submit' value= { buttonText } />
-          </div>
+
+          { this.imageInput() }
+
+          <input className='session-submit' type='submit' value= { buttonText } />
+
 
           { this.switchLink() }
         </form>
