@@ -1,6 +1,6 @@
 .session-box {
   font-size: 20px;
-  padding: 30px;
+  padding: 20px 30px 20px 30px;
   /*background-color: #eee;*/
   border-top: 5px solid red;
   margin: 0 auto;
@@ -57,7 +57,7 @@
   border: 0;
   margin: 0 auto;
   font-size: 14px;
-  width:  100%;
+  width: 320px;
   height: 40px;
   padding:  10px;
   border-radius:  5px;
@@ -66,6 +66,9 @@
   font-weight: bold;
   font-size: 18px;
   outline: 0;
+  box-sizing: border-box;
+  margin-bottom: 0px;
+
 }
 
 .session-submit:hover{
@@ -77,7 +80,7 @@
   font-size: 12px;
   color: #aaa;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .session-switcher > span{
@@ -88,4 +91,31 @@
 .session-switcher > span:hover{
   cursor: pointer;
   color: #777;
+}
+
+.session-image-input-header {
+  text-align:center;
+  display: block;
+}
+
+.session-image-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.session-image-upload-box {
+  max-width: 320px;
+}
+
+.session-image-preview > img {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.session-upload-button {
+  background-color: #888;
 }
