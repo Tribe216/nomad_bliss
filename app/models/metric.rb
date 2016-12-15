@@ -31,7 +31,8 @@ class Metric < ApplicationRecord
     cities = Set.new()
 
     Metric.all.select do |metric|
-      metric.long_name.downcase.include? search_string.downcase
+      ( metric.long_name.downcase.include?(search_string.downcase) ||
+        metric.name.downcase.include?(search_string.downcase) )
     end.each do |matched_metric|
       City.all.each do |city|
         cities << city if matched_metric.average_for_city(city) >= 6

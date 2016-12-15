@@ -1,14 +1,45 @@
 import React from 'react';
 
 import DetailHeader from './detail_header';
-import DetailScoreBarSection from './detail_score_bar_section';
-import DetailTagsSection from './detail_tags_section'
-
-import Review from '../review/review.jsx'
+import DetailAggregate from './detail_aggregate';
+import Review from '../review/review.jsx';
 
 class Detail extends React.Component {
   constructor(props) {
     super(props);
+    this.turnOnReviewMode = this.props.turnOnReviewMode.bind(this);
+    this.turnOffReviewMode = this.props.turnOffReviewMode.bind(this);
+    this.toggleMode = this.toggleMode.bind(this);
+    this.buttonText = this.buttonText.bind(this);
+    this.getMainComponent = this.getMainComponent.bind(this);
+  }
+
+  componentWillMount() {
+    this.turnOffReviewMode()
+  }
+
+  toggleMode() {
+     if (this.props.reviewMode) {
+       this.turnOffReviewMode();
+     } else {
+       this.turnOnReviewMode();
+     }
+  }
+
+  buttonText() {
+    if (this.props.reviewMode) {
+      return "Community Scores";
+    } else {
+      return "My Scores";
+    }
+  }
+
+  getMainComponent() {
+    if (this.props.reviewMode) {
+      return (<div>"WHAZZZUPPP"</div>);
+    } else {
+      return (<DetailAggregate cityDetails={this.props.cityDetails}/>);
+    }
   }
 
   render() {
@@ -19,9 +50,9 @@ class Detail extends React.Component {
           regionName={this.props.cityDetails.region_name}
           imageUrl={this.props.cityDetails.image_url}
         />
-        <DetailScoreBarSection scores={this.props.cityDetails.scores} />
-        <DetailTagsSection tags={this.props.cityDetails.tags} />
-        <button className='detail-review-button' onClick={this.handleClick}>Review {this.props.cityDetails.name}</button>
+        { this.getMainComponent() }
+        REVIEW STATE: {(this.props.reviewMode || false).toString()} <br />
+        <button className='detail-review-button' onClick={this.toggleMode}>{this.buttonText()}</button>
       </section>
     );
 

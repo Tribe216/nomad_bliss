@@ -1,16 +1,21 @@
 import { connect } from 'react-redux';
+import { turnOnReviewMode, turnOffReviewMode }
+  from '../../actions/session_actions';
+
 import Detail from './detail';
 
 const mapStateToProps = (state) => {
   return {
     cityDetails: state.city_detail,
-    loggedIn: Boolean(state.session.currentUser)
+    loggedIn: Boolean(state.session.currentUser),
+    reviewMode: state.session.reviewMode
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    //crud review stuff goes here?
+    turnOnReviewMode: () => dispatch(turnOnReviewMode()),
+    turnOffReviewMode: () => dispatch(turnOffReviewMode())
   };
 };
 

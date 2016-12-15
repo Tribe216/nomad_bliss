@@ -1,0 +1,18 @@
+//NEW
+
+{
+  review: {
+    city_id: 1,
+    metric_id: 1,
+    score: 4
+  }
+}
+
+//FIND / DESTROY
+
+{
+  review: {
+    city_id: 1,
+    metric_id: 1
+  }
+}

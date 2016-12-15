@@ -4,12 +4,15 @@ import {
 
 import { merge } from 'lodash';
 
-const FiltersReducer = (state = {}, action) => {
+
+
+const FiltersReducer = (state = {  }, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CITY_DETAIL:
-    // debugger
+      merge({}, action.cityDetails );
       return action.cityDetails;
+
     default:
       return state;
   }

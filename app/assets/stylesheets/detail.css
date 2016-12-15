@@ -118,8 +118,15 @@
 .detail-tags-header {
   font-size: 32px;
   text-align: center;
-  margin: 10px 0 20px 0;
-  color: #444
+  margin: 0px 0 20px 0;
+  color: #666;
+}
+
+.detail-bars-header {
+  font-size: 32px;
+  text-align: center;
+  margin: 10px 0 0px 0;
+  color: #666;
 }
 
 .detail-tags {
