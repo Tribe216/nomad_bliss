@@ -4,6 +4,8 @@ import DetailHeader from './detail_header';
 import DetailScoreBarSection from './detail_score_bar_section';
 import DetailTagsSection from './detail_tags_section'
 
+import Review from '../review/review.jsx'
+
 class Detail extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +21,7 @@ class Detail extends React.Component {
         />
         <DetailScoreBarSection scores={this.props.cityDetails.scores} />
         <DetailTagsSection tags={this.props.cityDetails.tags} />
+        <button className='detail-review-button' onClick={this.handleClick}>Review {this.props.cityDetails.name}</button>
       </section>
     );
 

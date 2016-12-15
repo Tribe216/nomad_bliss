@@ -80,7 +80,7 @@
 }
 
 .detail-bar-bg {
-  height: 30px;
+  height: 25px;
   position: relative;
   display: inline-block;
   width: 48%;
@@ -115,6 +115,13 @@
   text-shadow: 1px 1px 1px #aaa;
 }
 
+.detail-tags-header {
+  font-size: 32px;
+  text-align: center;
+  margin: 10px 0 20px 0;
+  color: #444
+}
+
 .detail-tags {
   display: inline-flex;
   flex-flow: row wrap;
@@ -138,4 +145,31 @@
   margin-top: 10px;
   box-sizing: border-box;
   margin: 5px;
+}
+
+.detail-review-button {
+  position: absolute;
+  left: 50%;
+    transform: translate(-50%);
+  bottom: 25px;
+  padding: 10px;
+
+  outline: none;
+  font-size: 14px;
+  font-weight: bold;
+  border: 2px solid red;
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: red;
+  color:white;
+
+  transition: background-color 0.3s, color 0.0s;
+
+}
+
+.detail-review-button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: red;
 }

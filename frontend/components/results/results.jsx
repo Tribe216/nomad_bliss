@@ -3,7 +3,7 @@ import ResultsBox from './results_box';
 import Modal from 'react-modal';
 import customStyles from '../modal_style';
 import DetailContainer from '../detail/detail_container';
-
+import ResultsNone from './results_none';
 class Results extends React.Component {
 
   constructor(props) {
@@ -30,28 +30,34 @@ class Results extends React.Component {
     this.setState({modalIsOpen: false});
   }
 
-  render() {
-    let boxes = [];
-
+  boxesOrEmpty() {
     if (this.props.results.length > 0) {
+      const boxes = [];
 
       this.props.results.forEach( (result, idx) => {
-
         boxes.push(
           <ResultsBox key={idx} fake={false} result={result} rank={idx+1} openDetail={this.openModal} updateCityDetail={this.props.updateCityDetail} />
         );
       });
-
+      
       boxes.push(<ResultsBox fake={true} />);
-    } else {
-      boxes.push(
-          <div>No Results</div>
+
+      return (
+        <section className="results-section">
+          { boxes }
+          </section>
       );
+    } else {
+      return (<ResultsNone />);
     }
 
+  }
+
+  render() {
     return (
-      <section className="results-section">
-        { boxes }
+      <div>
+
+        { this.boxesOrEmpty() }
         <Modal
           animationType={"fade"}
           isOpen={this.state.modalIsOpen}
@@ -62,10 +68,7 @@ class Results extends React.Component {
         >
           <DetailContainer closeModal={this.closeModal} />
         </Modal>
-
-
-      </section>
-
+      </div>
     );
   }
 }

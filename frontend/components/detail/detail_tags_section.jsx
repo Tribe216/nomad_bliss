@@ -17,9 +17,12 @@ class DetailTagsSection extends React.Component {
 
   render() {
     return (
-      <span className='detail-tags'>
-      { this.generateTags() }
-      </span>
+      <section>
+        <h1 className='detail-tags-header'>Tags</h1>
+        <span className='detail-tags'>
+          { this.generateTags() }
+        </span>
+      </section>
     );
 
   }
