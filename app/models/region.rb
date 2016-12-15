@@ -18,4 +18,16 @@ class Region < ApplicationRecord
     :foreign_key => :country_code,
     :primary_key => :code
 
+  def self.find_by_search(search_string)
+    cities = Set.new()
+
+    Region.all.select do |region|
+      region.name.downcase.include? search_string.downcase
+    end.each do |matched_region|
+      cities += matched_region.cities
+    end
+
+    cities.to_a
+  end
+
 end

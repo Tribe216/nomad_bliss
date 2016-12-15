@@ -19,5 +19,14 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :metric
 
+  def self.find_by_metric_name(metric_hash)
+    metric_id = Metric.find_by({name: metric_hash[:metric_name]}).id
 
+    rev = Review.find_by({
+      user_id: metric_hash[:user_id],
+      city_id: metric_hash[:city_id],
+      metric_id: metric_id
+    })
+    rev
+  end
 end

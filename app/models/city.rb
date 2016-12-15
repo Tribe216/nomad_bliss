@@ -62,6 +62,27 @@ class City < ApplicationRecord
     cities.sort{ |l, r| r["scores"][metric_name] <=> l["scores"][metric_name] }
   end
 
+  def reviews_for_user(user_id)
+    self.reviews.where("user_id = #{user_id}").map do |review|
+      {
+        review_id: review.id,
+        metric_name: Metric.find(review.metric_id).name,
+        score: review.score
+      }
+    end
+  end
+
+  def self.find_by_search(search_string)
+    cities = Set.new()
+
+    City.all.select do |city|
+      city.city_name.downcase.include? search_string.downcase
+    end.each do |matched_city|
+      cities << matched_city
+    end
+    cities.to_a
+  end
+
   def self.filter_by(filter_hash)
     match_cities = []
     search_bar_cities = Set.new
@@ -69,13 +90,14 @@ class City < ApplicationRecord
     if filter_hash[:searchFilters][:searchBar].length > 0
       search_bar_cities += Metric.find_by_search(filter_hash[:searchFilters][:searchBar]);
       search_bar_cities += Tag.find_by_search(filter_hash[:searchFilters][:searchBar]);
-      p search_bar_cities.to_a
+      search_bar_cities += City.find_by_search(filter_hash[:searchFilters][:searchBar]);
+      search_bar_cities += Region.find_by_search(filter_hash[:searchFilters][:searchBar]);
     end
 
     City.includes(:weather_records, :tags, :reviews).each do |city|
 
       is_match = true;
-      
+
       if filter_hash[:searchFilters][:searchBar].length > 0
         unless search_bar_cities.include? city
           is_match = false

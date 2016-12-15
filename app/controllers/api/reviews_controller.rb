@@ -1,5 +1,4 @@
 class Api::ReviewsController < ApplicationController
-  before_filter :require_signed_in!
 
   def create
     @review = current_user.reviews.new(review_params)
@@ -10,13 +9,18 @@ class Api::ReviewsController < ApplicationController
 
   end
 
+  def index
+    @reviews = current_user.reviews
+  end
+
   def show
-    @review = current_user.reviews.find(review_params)
+    city_id = params[:id]
+    @reviews = City.find(city_id).reviews_for_user(current_user.id)
   end
 
   def update
-    @review = Review.find(params[:id])
-
+    @review = find(params[:id])
+    @review.score = review_params[:score]
     unless @review.user == current_user
       render json: ["Can't edit/remove others' reviews!"], status: 401
     end
@@ -27,7 +31,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])
+    review = find(review_params[:review_id])
     if review.user == current_user
       review.destroy
     else
@@ -36,7 +40,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:city_id, :metric_id, :score)
+    params.require(:review).permit(:score)
   end
 
 end
