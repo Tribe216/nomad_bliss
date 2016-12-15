@@ -43,7 +43,7 @@ export const barData = {
 
   7: {
     width: 70,
-    color: 'orange',
+    color: 'green',
     label: 'good'
   },
 

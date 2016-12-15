@@ -4,7 +4,7 @@ def generate_score(metric_name)
   elsif metric_name == 'overall'
     return rand(3...10)
   else
-    return rand(1...10)
+    return rand(2...10)
   end
 end
 

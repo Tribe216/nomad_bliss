@@ -1,6 +1,8 @@
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const TURN_ON_REVIEW_MODE = 'TURN_ON_REVIEW_MODE';
+export const TURN_OFF_REVIEW_MODE = 'TURN_OFF_REVIEW_MODE';
 
 import * as ApiUtil from '../util/session_api_util';
 
@@ -21,6 +23,18 @@ export const receiveErrors = (errors) => {
 export const clearErrors = () => {
   return {
     type: CLEAR_ERRORS
+  };
+};
+
+export const turnOnReviewMode = () => {
+  return {
+    type: TURN_ON_REVIEW_MODE
+  };
+};
+
+export const turnOffReviewMode = () => {
+  return {
+    type: TURN_OFF_REVIEW_MODE
   };
 };
 

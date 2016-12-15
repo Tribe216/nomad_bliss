@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :metrics, only: [:index]
     resources :cities, only: [:index, :show]
-    resources :tags, only: [:index]
+    resources :tags, only: [:index, :create]
     resources :reviews, only: [:create, :show, :update, :destroy]
   end
 end

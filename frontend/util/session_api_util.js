@@ -9,14 +9,6 @@ export const signup = (formData) => {
   });
 };
 
-// export const login = (user) => {
-//   return $.ajax({
-//     type: "POST",
-//     url: "api/session",
-//     data: user
-//   });
-// };
-
 export const logout = () => {
   return $.ajax({
   type: "DELETE",

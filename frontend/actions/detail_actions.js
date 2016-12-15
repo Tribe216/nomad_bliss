@@ -9,6 +9,9 @@ export const receiveCityDetail = (cityDetails) => {
   };
 };
 
+
+
+
 export function updateCityDetail(cityId) {
   return (dispatch) => {
     return CityApiUtil.fetchCityDetail(cityId).then(
