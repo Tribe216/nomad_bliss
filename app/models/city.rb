@@ -1,3 +1,5 @@
+require 'set'
+
 # == Schema Information
 #
 # Table name: cities
@@ -62,15 +64,25 @@ class City < ApplicationRecord
 
   def self.filter_by(filter_hash)
     match_cities = []
+    search_bar_cities = Set.new
+
+    if filter_hash[:searchFilters][:searchBar].length > 0
+      search_bar_cities += Metric.find_by_search(filter_hash[:searchFilters][:searchBar]);
+      search_bar_cities += Tag.find_by_search(filter_hash[:searchFilters][:searchBar]);
+      p search_bar_cities.to_a
+    end
 
     City.includes(:weather_records, :tags, :reviews).each do |city|
 
-      unless filter_hash[:searchFilters]
-        match_cities << city
-        next
+      is_match = true;
+      
+      if filter_hash[:searchFilters][:searchBar].length > 0
+        unless search_bar_cities.include? city
+          is_match = false
+        end
       end
 
-      is_match = true;
+
       if filter_hash[:searchFilters][:metrics]
         metrics = filter_hash[:searchFilters][:metrics]
         metrics.each do |name, values|
@@ -99,6 +111,8 @@ class City < ApplicationRecord
           end
         end
       end
+
+
 
       match_cities << city if is_match
     end
