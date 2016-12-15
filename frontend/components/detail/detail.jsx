@@ -15,8 +15,7 @@ class Detail extends React.Component {
   }
 
   componentWillMount() {
-    this.turnOffReviewMode()
-    
+    this.turnOffReviewMode();
   }
 
   toggleMode() {

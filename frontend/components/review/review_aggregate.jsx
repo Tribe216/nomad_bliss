@@ -1,4 +1,5 @@
 import React from 'react';
+import Review from './review';
 
 class ReviewAggregate extends React.Component {
   constructor(props) {
@@ -11,16 +12,19 @@ class ReviewAggregate extends React.Component {
     this.props.getCityReviews(this.props.cityId);
   }
 
-  reviewEls() {
+  reviewEls(reviews) {
+
+    if (JSON.stringify(reviews) === "{}") {
+       return (<div></div>);
+    }
     const boxes = [];
 
-    debugger
-
-    this.props.cityReviews.forEach( (review, idx) => {
-      return (<Review key={idx} review={review} />);
+    reviews.forEach( (review, idx) => {
+      boxes.push(<Review key={idx} review={review} />);
     });
-  }
 
+    return boxes;
+  }
 
   render() {
     const baseScore = Math.ceil(this.props.score);
@@ -28,7 +32,7 @@ class ReviewAggregate extends React.Component {
     return   (
       <section className='review-aggregate'>
         <h1 className='detail-bars-header'>My Scores</h1>
-          {JSON.stringify(this.props)}
+          { this.reviewEls(this.props.cityReviews) }
         </section>
     );
   }

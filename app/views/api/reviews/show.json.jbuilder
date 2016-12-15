@@ -1,3 +1,1 @@
-json.reviews do
-  json.array! @reviews
-end
+json.array! @reviews

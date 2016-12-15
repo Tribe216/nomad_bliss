@@ -14,7 +14,7 @@ class Review extends React.Component {
 
     return (
       <section className='review-chart'>
-        HELLOO
+        {JSON.stringify(this.props)}
       </section>
     );
   }
