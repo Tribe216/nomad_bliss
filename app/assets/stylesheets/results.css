@@ -150,7 +150,8 @@
   top: 0px;
   left: 0px;
   height: 100%;
-  transition: all 0.5s ease;
+  transition: width 0.5s;
+  width: 10%;
 }
 
 .results-chart-bar-colored::after {

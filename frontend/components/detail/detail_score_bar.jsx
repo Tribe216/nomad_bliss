@@ -7,8 +7,9 @@ class DetailScoreBar extends React.Component {
     this.barData = barData;
   }
 
-  scoreBar(score) {
-    const baseScore = Math.ceil(score);
+  render() {
+    const baseScore = Math.ceil(this.props.score);
+
     return   (
       <span className='detail-bar-bg'>
         <span className='detail-bar-colored'
@@ -19,12 +20,6 @@ class DetailScoreBar extends React.Component {
           }}>
         </span>
       </span>
-    );
-  }
-
-  render() {
-    return (
-      this.scoreBar(this.props.score)
     );
 
   }
