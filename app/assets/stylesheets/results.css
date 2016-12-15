@@ -70,6 +70,10 @@
   filter: blur(3px);
 }
 
+.fake {
+  background-color: transparent;
+}
+
 .fake:hover {
   cursor: default;
 }
@@ -136,7 +140,7 @@
   box-sizing: border-box;
 }
 
-.results-chart-bar-bg {
+.results-bar-bg {
   height: 25px;
   position: relative;
   display:inline-block;
@@ -145,13 +149,30 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.results-chart-bar-colored {
+.results-bar-colored {
   position: absolute;
   top: 0px;
   left: 0px;
   height: 100%;
   transition: width 0.5s;
-  width: 10%;
+  width: 30%;
+}
+
+.results-bar-colored-enclosure {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  background-color: transparent;
+}
+
+.results-bar-colored {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1px;
+  height: 100%;
+  transition: all 0.5s ease;
 }
 
 .results-chart-bar-colored::after {
