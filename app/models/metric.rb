@@ -10,7 +10,7 @@
 #
 
 class Metric < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, :long_name, presence: true, uniqueness: true
 
   has_many :reviews
 
@@ -26,4 +26,19 @@ class Metric < ApplicationRecord
 
     (reviews.map {|r| r.score}.inject(:+).to_f / reviews.size).ceil
   end
+
+  def self.find_by_search(search_string)
+    cities = Set.new()
+
+    Metric.all.select do |metric|
+      metric.long_name.downcase.include? search_string.downcase
+    end.each do |matched_metric|
+      City.all.each do |city|
+        cities << city if matched_metric.average_for_city(city) >= 6
+      end
+    end
+
+    cities.to_a
+  end
+
 end

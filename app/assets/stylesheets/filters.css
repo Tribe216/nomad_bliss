@@ -101,3 +101,24 @@
   border-color: red;
   color: white;
 }
+
+.filters-search-bar {
+  display: block;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  outline: none;
+  font-size: 20px;
+  padding: 10px;
+  color: #777;
+  width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
+  padding-left: 40px;
+
+  background-size: 23px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+
+}

@@ -27,7 +27,8 @@ class Filters extends React.Component {
       searchFilters: {
         metrics: {},
         weather: {},
-        tags: []
+        tags: [],
+        searchBar: ""
       },
       activeFilters: []
     };
@@ -136,6 +137,7 @@ class Filters extends React.Component {
     this.toggleActive = this.toggleActive.bind(this);
     this.resetFilters = this.resetFilters.bind(this);
     this.setcostRange = this.setcostRange.bind(this);
+    this.updateFromSearchBar = this.updateFromSearchBar.bind(this);
   }
 
   resetFilters() {
@@ -384,6 +386,28 @@ class Filters extends React.Component {
     return buttons;
   }
 
+  searchBar() {
+    const bgUrl = window.search_icon;
+    const divStyle = {
+      backgroundImage: 'url(' +  bgUrl  + ')'
+    };
+
+    return (
+      <input
+        type="text"
+        className="filters-search-bar"
+        style= {divStyle}
+        onKeyUp={ this.updateFromSearchBar } />
+    );
+  }
+
+  updateFromSearchBar(e) {
+    let newFilters = merge({}, this.state.searchFilters);
+    newFilters.searchBar = e.target.value;
+    this.setState({ searchFilters: newFilters });
+  }
+
+
   toggleTag(tagName) {
     let newFilters = merge({}, this.state.searchFilters);
     if (newFilters.tags.includes(tagName)) {
@@ -410,8 +434,8 @@ class Filters extends React.Component {
         { this.weatherMonthButtons() }
         <section className="below-months">
           { lowButtons }
-          </section>
-        <br />
+        </section>
+        { this.searchBar() }
       </nav>
     );
   }
