@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :metrics, only: [:index]
     resources :cities, only: [:index, :show]
     resources :tags, only: [:index, :create]
-    resources :reviews, only: [:create, :show, :update, :destroy]
+    resources :reviews, only: [:create, :show, :index, :update, :destroy]
   end
 end

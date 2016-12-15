@@ -177,6 +177,5 @@
 
 .detail-review-button:hover {
   cursor: pointer;
-  background-color: white;
-  color: red;
+  background-color: #d00;
 }

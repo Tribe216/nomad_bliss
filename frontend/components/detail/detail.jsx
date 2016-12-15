@@ -2,7 +2,7 @@ import React from 'react';
 
 import DetailHeader from './detail_header';
 import DetailAggregate from './detail_aggregate';
-import Review from '../review/review.jsx';
+import ReviewAggregateContainer from '../review/review_aggregate_container.jsx';
 
 class Detail extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class Detail extends React.Component {
 
   componentWillMount() {
     this.turnOffReviewMode()
+    
   }
 
   toggleMode() {
@@ -36,7 +37,7 @@ class Detail extends React.Component {
 
   getMainComponent() {
     if (this.props.reviewMode) {
-      return (<div>"WHAZZZUPPP"</div>);
+      return (<ReviewAggregateContainer />);
     } else {
       return (<DetailAggregate cityDetails={this.props.cityDetails}/>);
     }
