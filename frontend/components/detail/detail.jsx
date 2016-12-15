@@ -2,6 +2,7 @@ import React from 'react';
 
 import DetailHeader from './detail_header';
 import DetailScoreBarSection from './detail_score_bar_section';
+import DetailTagsSection from './detail_tags_section'
 
 class Detail extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Detail extends React.Component {
           imageUrl={this.props.cityDetails.image_url}
         />
         <DetailScoreBarSection scores={this.props.cityDetails.scores} />
+        <DetailTagsSection tags={this.props.cityDetails.tags} />
       </section>
     );
 

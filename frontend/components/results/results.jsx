@@ -18,6 +18,10 @@ class Results extends React.Component {
     };
   }
 
+  componentDidMount() {
+    $(window.setTimeout( () => $('.detail-bar-colored').css({"width":"100%"}), 1))
+  }
+
   openModal()  {
     this.setState({modalIsOpen: true});
   }

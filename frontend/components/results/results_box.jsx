@@ -1,6 +1,6 @@
 import React from 'react';
 import { barData } from '../../util/helpers';
-
+import ResultsScoreBar from './results_score_bar'
 class Results extends React.Component {
 
   constructor(props) {
@@ -8,6 +8,17 @@ class Results extends React.Component {
     this.barData = barData;
     this.handleClick = this.handleClick.bind(this);
   }
+
+  componentDidMount() {
+    $(".results-box").hover(function () {
+      $(this).find(".results-bar-colored").css({"width":"100%"})
+    })
+
+    $(".results-box").mouseleave(function () {
+      $(this).find(".results-bar-colored").css({"width":"1%"})
+    })
+  };
+
 
   scoreBar(score) {
     const baseScore = Math.ceil(score);
@@ -50,22 +61,22 @@ class Results extends React.Component {
         <figure className='results-chart'>
           <div className='results-chart-row'>
             <span className='results-chart-label'>Overall</span>
-              { this.scoreBar(this.props.result.scores.overall)}
+              <ResultsScoreBar score={ this.props.result.scores.overall } />
           </div>
 
           <div className='results-chart-row'>
             <span className='results-chart-label'>Fun</span>
-              { this.scoreBar(this.props.result.scores.fun)}
+              <ResultsScoreBar score={ this.props.result.scores.fun } />
           </div>
 
           <div className='results-chart-row'>
             <span className='results-chart-label'>Safety</span>
-              { this.scoreBar(this.props.result.scores.safety)}
+              <ResultsScoreBar score={ this.props.result.scores.safety } />
           </div>
 
           <div className='results-chart-row'>
             <span className='results-chart-label'>Internet</span>
-              { this.scoreBar(this.props.result.scores.internet)}
+              <ResultsScoreBar score={ this.props.result.scores.internet } />
           </div>
         </figure>
       </article>

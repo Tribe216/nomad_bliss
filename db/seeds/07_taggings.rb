@@ -1,13 +1,12 @@
 def get_taggings
 
   taggings = []
-
-  1.upto(Tag.count) do |tag_id|
-    1.upto(City.count) do |city_id|
+  Tag.all.each do |tag|
+    City.all.each do |city|
       if rand(0..2) == 0
         taggings << {
-          tag_id: tag_id,
-          city_id: city_id
+          tag_id: tag.id,
+          city_id: city.id
         }
       end
     end

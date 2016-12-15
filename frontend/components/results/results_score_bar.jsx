@@ -1,7 +1,7 @@
 import React from 'react';
 import { barData } from '../../util/helpers.js';
 
-class DetailScoreBar extends React.Component {
+class ResultsScoreBar extends React.Component {
   constructor(props) {
     super(props);
     this.barData = barData;
@@ -9,14 +9,14 @@ class DetailScoreBar extends React.Component {
 
   render() {
     const baseScore = Math.ceil(this.props.score);
-  
+
     return   (
-      <span className='detail-bar-bg'>
-        <span className='detail-bar-colored-enclosure'
+      <span className='results-bar-bg'>
+        <span className='results-bar-colored-enclosure'
           style={{
             width: this.barData[baseScore].width + '%'
           }} >
-          <span className='detail-bar-colored'
+          <span className='results-bar-colored'
             style={{
               backgroundColor: this.barData[baseScore].color,
               color: this.barData[baseScore].color
@@ -29,4 +29,4 @@ class DetailScoreBar extends React.Component {
   }
 }
 
-export default DetailScoreBar;
+export default ResultsScoreBar;

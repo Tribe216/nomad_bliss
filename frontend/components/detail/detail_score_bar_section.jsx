@@ -8,6 +8,10 @@ class DetailScoreBarSection extends React.Component {
     this.metricLongNames = metricLongNames;
   }
 
+  componentDidMount() {
+    $(window.setTimeout( () => $('.detail-bar-colored').css({"width":"100%"}), 1))
+  }
+
   costToScore(costOfLiving) {
     return Math.ceil((3500 - costOfLiving) / 320);
   }

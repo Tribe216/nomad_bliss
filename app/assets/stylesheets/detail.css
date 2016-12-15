@@ -17,7 +17,6 @@
 .detail-header {
   height: 160px;
   width: 100%;
-  background-color: green;
   display: block;
   position: relative;
   overflow: hidden;
@@ -60,10 +59,11 @@
   font-size: 16px;
   font-weight: normal;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .detail-chart-element {
-  width: 50%;
+  width: 49%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
@@ -89,10 +89,19 @@
   margin-right:30px;
 }
 
+.detail-bar-colored-enclosure {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  background-color: transparent;
+}
+
 .detail-bar-colored {
   position: absolute;
   top: 0px;
   left: 0px;
+  width: 1px;
   height: 100%;
   transition: all 0.5s ease;
 }
@@ -104,4 +113,29 @@
     transform: translate(-50%, -50%);
   color: white;
   text-shadow: 1px 1px 1px #aaa;
+}
+
+.detail-tags {
+  display: inline-flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%
+}
+
+.detail-tag {
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: white;
+  text-transform: uppercase;
+  outline: none;
+  font-size: 12px;
+  padding: 10px;
+  color: #777;
+  width: 170px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  margin: 5px;
 }

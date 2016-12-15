@@ -7,10 +7,10 @@ def get_weather_records
     (summer_offset * 5 + rand(0..6))
   end
 
-  1.upto(City.count) do |city_id|
+  City.all.each do |city|
     0.upto(11) do |month|
       weather_records << {
-        city_id: city_id,
+        city_id: city.id,
         month: month,
         temp: random_temp(40, month)
       }
