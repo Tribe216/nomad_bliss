@@ -83,17 +83,17 @@
 
 
 .part1:hover, .part2:hover, .part3:hover, .part4:hover {
-  background-color: red;
+  background-color: #d00;
   cursor: pointer;
 }
 
 .part5:hover, .part6:hover {
-  background-color: orange;
+  background-color: #ff6600;
   cursor: pointer;
 }
 
 .part7:hover, .part8:hover, .part9:hover, .part10:hover {
-  background-color: green;
+  background-color: #060;
   cursor: pointer;
 }
 
