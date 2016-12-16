@@ -32,11 +32,12 @@ class Detail extends React.Component {
     let buttonText = null;
 
     if (this.props.reviewMode) {
-      buttonText =  "Community Scores";
+      buttonText = "Community Scores";
     } else {
-      buttonText =  "My Scores";
+      buttonText = "My Scores";
     }
     return (<button className='detail-review-button' onClick={this.toggleMode}>{buttonText}</button>);
+
   }
 
   getMainComponent() {
