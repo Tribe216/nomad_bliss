@@ -10,8 +10,8 @@ class Detail extends React.Component {
     this.turnOnReviewMode = this.props.turnOnReviewMode.bind(this);
     this.turnOffReviewMode = this.props.turnOffReviewMode.bind(this);
     this.toggleMode = this.toggleMode.bind(this);
-    this.buttonText = this.buttonText.bind(this);
     this.getMainComponent = this.getMainComponent.bind(this);
+    this.bottomButton = this.bottomButton.bind(this);
   }
 
   componentWillMount() {
@@ -26,12 +26,17 @@ class Detail extends React.Component {
      }
   }
 
-  buttonText() {
+
+  bottomButton() {
+    if (!this.props.loggedIn) { return (<div />); }
+    let buttonText = null;
+
     if (this.props.reviewMode) {
-      return "Community Scores";
+      buttonText =  "Community Scores";
     } else {
-      return "My Scores";
+      buttonText =  "My Scores";
     }
+    return (<button className='detail-review-button' onClick={this.toggleMode}>{buttonText}</button>);
   }
 
   getMainComponent() {
@@ -51,7 +56,7 @@ class Detail extends React.Component {
           imageUrl={this.props.cityDetails.image_url}
         />
         { this.getMainComponent() }
-        <button className='detail-review-button' onClick={this.toggleMode}>{this.buttonText()}</button>
+        { this.bottomButton() }
       </section>
     );
 

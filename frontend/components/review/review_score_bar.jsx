@@ -40,15 +40,15 @@ class ReviewScoreBar extends React.Component {
     if (existing) {
       scoreParts.push(
         <button
-          className={'review-score-part remove-review'} key={0}
+          className={'review-score-part review-remove-relevant'} key={0}
           onClick = { this.handleClickRemove }
         >X</button>
       );
     } else {
       scoreParts.push(
         <button
-          className={'review-score-part remove-review'} key={0}
-        >' '</button>
+          className={'review-score-part review-remove-inactive'} key={0}
+        >X</button>
       );
     }
 
@@ -56,29 +56,28 @@ class ReviewScoreBar extends React.Component {
 
     for (let i=1; i <=10; i++){
       if (existing) {
-        let divStyle = {};
-        if (this.props.review.score === i ) {
-          divStyle = {
-            fontWeight: 'bold'
-          };
-        } else {
-          divStyle = {
-            color: 'gray'
-          };
-        }
+        let onClass = "";
+        if ( i <= this.props.review.score) {
+          if (this.props.review.score <= 4) {
+            onClass = "part-of-score-bar-red";
+          } else if (this.props.review.score === 5 || this.props.review.score === 6) {
+            onClass = "part-of-score-bar-orange";
+          } else {
+            onClass = "part-of-score-bar-green";
+          }
+        }    
 
-        scoreParts.push(
+      scoreParts.push(
           <button
-            className={'review-score-part part' + i} key={i}
+            className={'review-score-part review-has-review part' + i + ' ' + onClass} key={i}
             onClick = { this.handleClickUpdate.bind(this, i) }
-            style={divStyle}
           >
           { i }
         </button>);
       } else {
         scoreParts.push(
           <button
-            className={'review-score-part part' + i} key={i}
+            className={'review-score-part review-no-review part' + i} key={i}
             onClick = { this.handleClickNew.bind(this, i) }
           >
           { i }
@@ -87,7 +86,7 @@ class ReviewScoreBar extends React.Component {
 
 
     }
-    return (<span className='review-bar-bg'>{scoreParts}</span>);
+    return (<div className='review-chart-part-wrapper'>{scoreParts}</div>);
   }
 
   render() {

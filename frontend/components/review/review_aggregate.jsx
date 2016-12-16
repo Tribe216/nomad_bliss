@@ -48,8 +48,10 @@ class ReviewAggregate extends React.Component {
 
     return   (
       <section className='review-aggregate'>
-        <h1 className='detail-bars-header'>My Scores</h1>
-          { this.reviewEls(this.props.cityReviews) }
+        <h1 className='review-bars-header'>My Scores</h1>
+          <section className='review-bar-box'>
+            { this.reviewEls(this.props.cityReviews) }
+          </section>
         </section>
     );
   }

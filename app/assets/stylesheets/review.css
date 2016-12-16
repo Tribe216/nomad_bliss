@@ -1,14 +1,106 @@
+.review-aggregate {
+}
+
+.review-bars-header {
+  text-align: center;
+  color: #666;
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+.review-bar-box {
+}
+
+.review-chart-element {
+   width: 90%;
+  text-align:center;
+
+   margin: 0 auto;
+}
+
+.review-chart-label{
+    display: inline-block;
+    width: 40%;
+    font-size: 18px;
+    text-align: left;
+    color: black
+}
+
+.review-chart-part-wrapper {
+    display: inline;
+    margin: 0 auto;
+    width: 40%;
+}
+
 .review-score-part {
+  width: 5%;
+  height: 30px;
+  margin: 3px 0;
 
+  outline: none;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  color: transparent;
+  border-right: 0px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+
+  transition: background-color 0.3s, color 0.0s;
 }
-.part1, .part2, .part3 {
 
+.review-remove-relevant {
+  border-left: 1px solid #ccc;
+  background-color: #666;
+  color: white;
+  margin-right: 3px
+}
+
+.review-remove-relevant:hover {
+  cursor: pointer;
+  background-color: #d00;
+}
+
+.review-remove-inactive {
+    color:white;
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.part-of-score-bar-red {
+  background-color: red;
+}
+
+.part-of-score-bar-orange {
+  background-color: orange;
+}
+
+.part-of-score-bar-green {
+  background-color: green
+}
+
+
+.part1:hover, .part2:hover, .part3:hover, .part4:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.part5:hover, .part6:hover {
+  background-color: orange;
+  cursor: pointer;
+}
+
+.part7:hover, .part8:hover, .part9:hover, .part10:hover {
+  background-color: green;
+  cursor: pointer;
 }
 
 .part1 {
-
+  border-left: 1px solid #ccc;
 }
 
-.part1 {
-
+.part10 {
+  border-right: 1px solid #ccc;
 }
