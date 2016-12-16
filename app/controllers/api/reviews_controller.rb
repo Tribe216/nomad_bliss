@@ -1,9 +1,26 @@
 class Api::ReviewsController < ApplicationController
 
   def create
-    @review = current_user.reviews.new(review_params)
 
-    unless @review.save
+    metric = Metric.find_by name: review_params[:metric_name]
+
+    new_params = {
+      user_id: current_user.id,
+      city_id: review_params[:city_id],
+      metric_id: metric.id,
+      score: review_params[:score]
+    }
+
+    @review = Review.new(new_params)
+
+    if @review.save
+      render json: {
+        review_id: @review.id,
+        metric_name: Metric.find(@review.metric_id).name,
+        score: @review.score
+      }
+
+    else @review.save
       render json: ["Review submission problem"], status: 401
     end
 
@@ -19,7 +36,8 @@ class Api::ReviewsController < ApplicationController
   end
 
   def update
-    @review = find(params[:id])
+    @review = Review.find(params[:id])
+
     @review.score = review_params[:score]
     unless @review.user == current_user
       render json: ["Can't edit/remove others' reviews!"], status: 401
@@ -28,19 +46,21 @@ class Api::ReviewsController < ApplicationController
     unless @review.save
       render json: ["Review update problem"], status: 401
     end
+
+    render json: @review
   end
 
   def destroy
-    review = find(review_params[:review_id])
-    if review.user == current_user
-      review.destroy
-    else
+    review = Review.find(params[:id])
+    unless review.destroy
       render json: ["Can't edit/remove others' reviews!"], status: 401
     end
+
+    render :show
   end
 
   def review_params
-    params.require(:review).permit(:score)
+    params.require(:review).permit(:city_id, :metric_name, :score)
   end
 
 end

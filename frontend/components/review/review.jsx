@@ -1,5 +1,6 @@
 import React from 'react';
 import { metricLongNames } from '../../util/helpers';
+import ReviewScoreBarSection from './review_score_bar_section'
 
 class Review extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Review extends React.Component {
 
     return (
       <section className='review-chart'>
-        {JSON.stringify(this.props)}
+        <ReviewScoreBarSection
       </section>
     );
   }

@@ -14,7 +14,7 @@ export const newReview = (reviewData) => {
   });
 };
 
-export const updateReview = (reviewId, reviewData) => {
+export const pushReview = (reviewId, reviewData) => {
   return $.ajax({
   type: "PATCH",
   url: `api/reviews/${reviewId}`,

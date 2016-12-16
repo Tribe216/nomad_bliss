@@ -1,5 +1,5 @@
 import React from 'react';
-import Review from './review';
+import ReviewScoreBar from './review_score_bar';
 
 class ReviewAggregate extends React.Component {
   constructor(props) {
@@ -12,6 +12,10 @@ class ReviewAggregate extends React.Component {
     this.props.getCityReviews(this.props.cityId);
   }
 
+  getReviewForMetric(metricName) {
+    return this.props.cityReviews.find( (el) => { return el.metric_name === metricName; });
+  }
+
   reviewEls(reviews) {
 
     if (JSON.stringify(reviews) === "{}") {
@@ -19,8 +23,21 @@ class ReviewAggregate extends React.Component {
     }
     const boxes = [];
 
+    this.props.allMetrics.forEach ( (metric, idx)  => {
+      boxes.push(
+        <ReviewScoreBar
+          key={idx}
+          metricName={metric}
+          cityId={this.props.cityId}
+          review={this.getReviewForMetric(metric)}
+          newReview={this.props.submitNewReview}
+          editReview={this.props.submitUpdatedReview}
+          removeReview={this.props.removeReview}
+        />);
+    });
+
     reviews.forEach( (review, idx) => {
-      boxes.push(<Review key={idx} review={review} />);
+
     });
 
     return boxes;

@@ -8,7 +8,7 @@ import { login, logout, signup, turnOffReviewMode, turnOnReviewMode } from './ac
 import { updateSearchResults } from './actions/filters_actions';
 import { updateCityDetail } from './actions/detail_actions';
 import { fetchCities } from './util/city_api_util';
-import { getCityReviews } from './actions/review_actions';
+import { getCityReviews, submitNewReview } from './actions/review_actions';
 
 window.login = login;
 window.logout = logout;
@@ -20,6 +20,8 @@ window.updateCityDetail = updateCityDetail;
 window.turnOnReviewMode = turnOnReviewMode;
 window.turnOffReviewMode = turnOffReviewMode;
 window.getCityReviews = getCityReviews;
+
+window.submitNewReview = submitNewReview;
 // window.store = configureStore();
 
 document.addEventListener('DOMContentLoaded', () => {

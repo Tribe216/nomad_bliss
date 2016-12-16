@@ -3,12 +3,14 @@ import ReviewAggregate from './review_aggregate';
 import {
   getCityReviews,
   submitNewReview,
-  submitUpdatedReview} from '../../actions/review_actions';
+  submitUpdatedReview,
+  removeReview} from '../../actions/review_actions';
 
 const mapStateToProps = (state) => {
   return {
     cityId: state.city_detail.id,
-    cityReviews: state.reviews
+    cityReviews: state.reviews,
+    allMetrics: Object.keys(state.city_detail.scores)
   };
 };
 
@@ -16,7 +18,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getCityReviews: (cityId) => dispatch(getCityReviews(cityId)),
     submitNewReview: (reviewData) => dispatch(submitNewReview(reviewData)),
-    submitUpdatedReview: (reviewData) => dispatch(submitUpdatedReview(reviewData))
+    submitUpdatedReview: (reviewId, reviewData) => dispatch(submitUpdatedReview(reviewId, reviewData)),
+    removeReview: (reviewId) => dispatch(removeReview(reviewId))
   };
 };
 

@@ -51,7 +51,6 @@ class Detail extends React.Component {
           imageUrl={this.props.cityDetails.image_url}
         />
         { this.getMainComponent() }
-        REVIEW STATE: {(this.props.reviewMode || false).toString()} <br />
         <button className='detail-review-button' onClick={this.toggleMode}>{this.buttonText()}</button>
       </section>
     );
