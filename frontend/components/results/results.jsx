@@ -42,7 +42,7 @@ class Results extends React.Component {
             fake={false}
             result={result}
             rank={idx+1}
-            openDetail={this.openModal} 
+            openDetail={this.openModal}
             updateCityDetail={this.props.updateCityDetail}
           />
         );
@@ -60,7 +60,6 @@ class Results extends React.Component {
     } else {
       return (<ResultsNone />);
     }
-
   }
 
   render() {
