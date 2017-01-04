@@ -1,4 +1,7 @@
-var path = require("path");
+
+const webpack = require('webpack'),
+    path = require('path'),
+    fs = require('fs');
 
 module.exports = {
   context: __dirname,
@@ -24,11 +27,12 @@ module.exports = {
     extensions: ["", ".js", ".jsx" ]
   },
 
-  plugins:[
-  new webpack.DefinePlugin({
-    'process.env':{
-      'NODE_ENV': JSON.stringify('production')
-    }
-  }),
+  plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            }
+        }),
+    ]
 
 };
