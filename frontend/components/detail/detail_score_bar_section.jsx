@@ -28,13 +28,13 @@ class DetailScoreBarSection extends React.Component {
       longName = this.metricLongNames[key];
 
       if (key === 'cost_of_living') {
-        bar = <DetailScoreBar score={this.costToScore(scores[key])} />;
+        bar = <DetailScoreBar key={index} score={this.costToScore(scores[key])} />;
       } else {
-        bar = <DetailScoreBar score={scores[key]} />;
+        bar = <DetailScoreBar key={index} score={scores[key]} />;
       }
 
       bars.push(
-        <div className='detail-chart-element'>
+        <div key={index} className='detail-chart-element'>
           <span className='detail-chart-label'>{ longName }</span>
             { bar }
         </div>

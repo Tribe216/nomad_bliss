@@ -4,25 +4,17 @@ import configureStore from './store/store';
 import Root from './components/root';
 import Modal from 'react-modal';
 
-import { login, logout, signup, turnOffReviewMode, turnOnReviewMode } from './actions/session_actions';
+import {
+  login,
+  logout,
+  signup,
+  turnOffReviewMode,
+  turnOnReviewMode
+} from './actions/session_actions';
 import { updateSearchResults } from './actions/filters_actions';
 import { updateCityDetail } from './actions/detail_actions';
 import { fetchCities } from './util/city_api_util';
 import { getCityReviews, submitNewReview } from './actions/review_actions';
-
-window.login = login;
-window.logout = logout;
-window.signup = signup;
-window.updateSearchResults = updateSearchResults;
-window.fetchCities = fetchCities;
-window.updateCityDetail = updateCityDetail;
-
-window.turnOnReviewMode = turnOnReviewMode;
-window.turnOffReviewMode = turnOffReviewMode;
-window.getCityReviews = getCityReviews;
-
-window.submitNewReview = submitNewReview;
-// window.store = configureStore();
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -34,5 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const root = document.getElementById('root');
-  ReactDOM.render(<Root store={ store }/>, root);
+  ReactDOM.render(<Root store={ window.store }/>, root);
 });

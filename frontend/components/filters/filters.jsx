@@ -227,14 +227,14 @@ class Filters extends React.Component {
         "filter-button weather-button active" : "weather-button filter-button";
 
       buttons.push(
-        <button className={_className} key={monthAbbr} onClick={ this.toggleWeatherMonth.bind(this, monthAbbr, idx) }>
+        <button className={_className} key={idx} onClick={ this.toggleWeatherMonth.bind(this, monthAbbr, idx) }>
           {monthAbbr}
         </button>
       );
     });
 
     return (
-      <span className="button-box month-box">{buttons}</span>
+      <span key='2' className="button-box month-box">{buttons}</span>
     );
   }
 
@@ -267,7 +267,7 @@ class Filters extends React.Component {
       );
     });
 
-    return  [<span className="temp-box button-box group">{buttons}</span>];
+    return  [<span key='0' className="temp-box button-box group">{buttons}</span>];
   }
 
   toggleWeatherRange(range) {
@@ -301,7 +301,7 @@ class Filters extends React.Component {
       );
     });
 
-    return  [<span className="cost-box button-box group">{buttons}</span>];
+    return  [<span key='1' className="cost-box button-box group">{buttons}</span>];
   }
 
   toggleCostOfLiving(range) {

@@ -8,9 +8,9 @@ class DetailTagsSection extends React.Component {
   }
 
   generateTags() {
-    return this.props.tags.map( (tagText) => {
+    return this.props.tags.map( (tagText, i) => {
       return (
-        <span className="detail-tag">{tagText}</span>
+        <span key={i} className="detail-tag">{tagText}</span>
       );
     });
   }

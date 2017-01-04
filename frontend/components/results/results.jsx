@@ -33,14 +33,24 @@ class Results extends React.Component {
   boxesOrEmpty() {
     if (this.props.results.length > 0) {
       const boxes = [];
+      let maxId = 0;
 
       this.props.results.forEach( (result, idx) => {
         boxes.push(
-          <ResultsBox key={idx} fake={false} result={result} rank={idx+1} openDetail={this.openModal} updateCityDetail={this.props.updateCityDetail} />
+          <ResultsBox
+            key={idx}
+            fake={false}
+            result={result}
+            rank={idx+1}
+            openDetail={this.openModal} 
+            updateCityDetail={this.props.updateCityDetail}
+          />
         );
+
+        maxId = idx + 1;
       });
-      
-      boxes.push(<ResultsBox fake={true} />);
+
+      boxes.push(<ResultsBox key={maxId} fake={true} />);
 
       return (
         <section className="results-section">
