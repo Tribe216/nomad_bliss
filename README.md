@@ -6,7 +6,7 @@
 
 Nomad Bliss is a full stack web digital application inspired by Nomad List. Its purpose is to help location-independent workers, a.k.a. "digital nomads", find the ideal place to live. It is built using a Ruby on Rails API for the backend and React with Redux for the front end.
 
-## Features f& Implementation
+## Features & Implementation
 
 ### Main Search Page
 
