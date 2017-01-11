@@ -21,9 +21,10 @@
 .review-chart-label{
     display: inline-block;
     width: 40%;
-    font-size: 18px;
-    text-align: left;
-    color: black
+    font-size: 16px;
+    text-align: right;
+    color: black;
+    margin-right: 10px;
 }
 
 .review-chart-part-wrapper {
@@ -34,8 +35,8 @@
 
 .review-score-part {
   width: 5%;
-  height: 30px;
-  margin: 3px 0;
+  height: 25px;
+  margin: 2px 0;
 
   outline: none;
   font-size: 14px;
@@ -53,8 +54,11 @@
 .review-remove-relevant {
   border-left: 1px solid #ccc;
   background-color: #666;
+  width: 25px;
   color: white;
-  margin-right: 3px
+  margin-right: 3px;
+  text-align: center;
+  padding: 0;
 }
 
 .review-remove-relevant:hover {
@@ -64,9 +68,13 @@
 
 .review-remove-inactive {
     color:white;
+    width: 25px;
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
+    margin-right: 3px;
+    text-align: center;
+    padding: 0;
 }
 
 .part-of-score-bar-red {
