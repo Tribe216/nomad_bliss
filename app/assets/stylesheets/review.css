@@ -24,17 +24,17 @@
     font-size: 16px;
     text-align: right;
     color: black;
-    margin-right: 10px;
+    padding-right: 10px;
 }
 
 .review-chart-part-wrapper {
     display: inline;
-    margin: 0 auto;
+    margin-left: 10px;
     width: 40%;
 }
 
 .review-score-part {
-  width: 5%;
+  width: 25px;
   height: 25px;
   margin: 2px 0;
 
@@ -56,7 +56,7 @@
   background-color: #666;
   width: 25px;
   color: white;
-  margin-right: 3px;
+  margin-right: 1px;
   text-align: center;
   padding: 0;
 }
