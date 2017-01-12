@@ -85,3 +85,36 @@ main {
   max-width: 900px;
   margin: 0 auto;
 }
+
+footer {
+  margin: 30px 0 15px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ul {
+  list-style: none;
+  margin: none;
+  font-size: 20px;
+  color: gray;
+}
+
+li {
+  float: left;
+  width: 130px;
+  border: 0px solid gray;
+  box-sizing: border-box;
+}
+
+li:hover {
+  font-size: 22px;
+  transition: font-size 0.2s;
+   color: red;
+
+}
+
+li > a{
+  text-decoration: none;
+
+}
