@@ -15,10 +15,8 @@ class DetailAggregate extends React.Component {
         <h1 className='detail-bars-header'>Scores</h1>
         <DetailScoreBarSection scores={this.props.cityDetails.scores} />
         <DetailTagsSection tags={this.props.cityDetails.tags} />
-
       </section>
     );
-
   }
 }
 
