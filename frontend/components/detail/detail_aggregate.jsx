@@ -8,7 +8,6 @@ class DetailAggregate extends React.Component {
   }
 
   render() {
-    const baseScore = Math.ceil(this.props.score);
 
     return   (
       <section className='detail-aggregate'>

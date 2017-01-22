@@ -26,17 +26,21 @@ class Detail extends React.Component {
      }
   }
 
-
   bottomButton() {
-    if (!this.props.loggedIn) { return (<div />); }
     let buttonText = null;
 
-    if (this.props.reviewMode) {
-      buttonText = "Community Scores";
+    if (!this.props.loggedIn) {
+      buttonText = "Please login to Review!";
+      return (<button className='detail-review-button'>{buttonText}</button>);
     } else {
-      buttonText = "My Scores";
+      if (this.props.reviewMode) {
+        buttonText = "Community Scores";
+      } else {
+        buttonText = "My Scores";
+      }
+
+      return (<button className='detail-review-button' onClick={this.toggleMode}>{buttonText}</button>);
     }
-    return (<button className='detail-review-button' onClick={this.toggleMode}>{buttonText}</button>);
 
   }
 

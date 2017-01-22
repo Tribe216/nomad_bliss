@@ -17,12 +17,13 @@ import { fetchCities } from './util/city_api_util';
 import { getCityReviews, submitNewReview } from './actions/review_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
+  let preloadedState = {};
 
   if (window.currentUser) {
-    const preloadedState = { session: { currentUser: window.currentUser } };
-    window.store = configureStore(preloadedState);
-  } 
+    preloadedState = { session: { currentUser: window.currentUser } };
+  }
+  const store = configureStore(preloadedState);
 
   const root = document.getElementById('root');
-  ReactDOM.render(<Root store={ window.store }/>, root);
+  ReactDOM.render(<Root store={ store }/>, root);
 });
