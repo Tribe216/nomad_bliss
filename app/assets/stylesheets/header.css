@@ -28,14 +28,11 @@
 .site-name {
   font-size: 28px;
   color: black;
-  /*background-color: teal;*/
 }
 
 .site-name > strong {
   font-weight: bold;
 }
-
-
 
 .auth-box {
   display: flex;

@@ -30,8 +30,8 @@ class Detail extends React.Component {
     let buttonText = null;
 
     if (!this.props.loggedIn) {
-      buttonText = "Please login to Review!";
-      return (<button className='detail-review-button'>{buttonText}</button>);
+      buttonText = "Please login to review!";
+      return (<button className='detail-review-login-message'>{buttonText}</button>);
     } else {
       if (this.props.reviewMode) {
         buttonText = "Community Scores";

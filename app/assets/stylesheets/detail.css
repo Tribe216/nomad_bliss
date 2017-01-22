@@ -172,7 +172,25 @@
   color:white;
 
   transition: background-color 0.3s, color 0.0s;
+}
 
+.detail-review-login-message {
+  position: absolute;
+  left: 50%;
+    transform: translate(-50%);
+  bottom: 25px;
+  padding: 10px;
+
+  outline: none;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: white;
+  color: #aaa;
+
+  transition: background-color 0.3s, color 0.0s;
 }
 
 .detail-review-button:hover {
