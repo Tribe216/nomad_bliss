@@ -31,7 +31,7 @@ class Greeting extends Component {
     return (
       <div className='auth-box group'>
         <div className="profile-pic" to="/profile" style={divStyle}>
-      
+
         </div>
         <figcaption className="profile-name" > { this.props.currentUser.user.username } </figcaption>
         <button className="auth-button red-box" onClick={this.props.logout} >Log Out</button>
@@ -42,6 +42,7 @@ class Greeting extends Component {
   userLoggedOutGreeting () {
     return (
       <div className='auth-box group'>
+        <div className='auth-login-encouragement'>Log in to rate cities!</div>
         <button onClick={this.openModal.bind(this, 'signup')} className='auth-button red-box'>Join</button>
         <button onClick={this.openModal.bind(this, 'login')} className='auth-button white-box'>Login</button>
       </div>

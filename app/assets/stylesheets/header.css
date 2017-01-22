@@ -35,8 +35,9 @@
   font-weight: bold;
 }
 
-.auth-box {
 
+
+.auth-box {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -57,6 +58,10 @@
   float: left;
   transition: background-color 0.3s, color 0.0s;
   outline: 0;
+}
+
+.auth-login-encouragement {
+  color: #aaa;
 }
 
 .auth-button:hover {
