@@ -64,7 +64,6 @@ class Detail extends React.Component {
         { this.bottomButton() }
       </section>
     );
-
   }
 }
 
